@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+//Max
+
 public class Player : Character
 {
     public static Player instance;

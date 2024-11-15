@@ -1,5 +1,7 @@
 using UnityEngine;
 
+//Max
+
 public class Character : MonoBehaviour
 {
     [Header("Attributes")]

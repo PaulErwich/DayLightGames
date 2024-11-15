@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 0
-  speed: 5
+  speed: 6
   armour: 1
 --- !u!114 &1378768938127390886
 MonoBehaviour:

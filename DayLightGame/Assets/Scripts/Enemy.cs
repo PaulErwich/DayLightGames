@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+//Max
+
 public class Enemy : Character
 {
     [Header("Attributes")]
@@ -44,7 +46,20 @@ public class Enemy : Character
     {
         if (collision.gameObject.tag == "PlayerProjectiles")
         {
-            //TakeDamage(collision.gameObject.GetComponent<Arrow>().damage);
+            /*
+            TakeDamage(collision.gameObject.GetComponent<Arrow>().damage);
+            switch (collision.evolve)
+            {
+                case "Burn":
+                    Burn(collision.evolve.ticks, collision.evolve.damage);
+                    break;
+            }
+            */
         }
+    }
+
+    public void Burn()
+    {
+
     }
 }
