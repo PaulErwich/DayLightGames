@@ -16,7 +16,7 @@ public class Character : MonoBehaviour
         armour = _armour;
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         rb = gameObject.AddComponent<Rigidbody2D>();
         rb.gravityScale = 0;

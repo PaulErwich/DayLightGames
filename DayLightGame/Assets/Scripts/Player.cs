@@ -3,9 +3,24 @@ using UnityEngine.InputSystem;
 
 public class Player : Character
 {
+    public static Player instance;
+
     private Vector2 move;
 
     private Player(int hitPoints, int speed, int armour) : base(hitPoints, speed, armour) { }
+
+    protected override void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        base.Awake();
+    }
 
     private void OnMove(InputValue value)
     {

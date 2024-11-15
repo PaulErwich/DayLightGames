@@ -6,8 +6,6 @@ public class Enemy : Character
     [Header("Attributes")]
     private int goldWorth;
 
-    Vector2 target;
-
     NavMeshAgent agent;
 
     private Enemy(int hitPoints, int speed, int armour, int goldWorth) : base(hitPoints, speed, armour) { }
@@ -38,9 +36,8 @@ public class Enemy : Character
 
     private void GetTargetPosition()
     {
-        Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        target.z = 0;
-        agent.SetDestination(target);
+        Vector2 playerPos = Player.instance.transform.position;
+        agent.SetDestination(playerPos);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
