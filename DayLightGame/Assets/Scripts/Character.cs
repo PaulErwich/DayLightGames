@@ -6,14 +6,21 @@ public class Character : MonoBehaviour
     public int hitPoints;
     public int speed;
     public int armour;
-    private Rigidbody rb;
+    private Rigidbody2D rb;
+    private CircleCollider2D cc;
 
     public Character(int _hitPoints, int _speed, int _armour)
     {
         hitPoints = _hitPoints;
         speed = _speed;
         armour = _armour;
-        rb = gameObject.AddComponent<Rigidbody>();
+    }
+
+    private void Awake()
+    {
+        rb = gameObject.AddComponent<Rigidbody2D>();
+        rb.gravityScale = 0;
+        cc = gameObject.AddComponent<CircleCollider2D>();
     }
 
     public virtual void TakeDamage(int amount)

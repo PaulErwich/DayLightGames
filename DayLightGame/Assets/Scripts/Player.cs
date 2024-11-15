@@ -27,4 +27,21 @@ public class Player : Character
         Vector2 currentPos = transform.position;
         transform.position = Vector2.MoveTowards(transform.position, move + currentPos, speed * Time.deltaTime);
     }
+
+    public override void TakeDamage(int amount)
+    {
+        base.TakeDamage(amount);
+        if (IsDead())
+        {
+            // Death Logic
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyProjectiles")
+        {
+            //TakeDamage(collision.gameObject.GetComponent<Arrow>().damage);
+        }
+    }
 }

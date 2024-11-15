@@ -21,4 +21,17 @@ public class Enemy : Character
     {
         
     }
+
+    public void MoveEnemy()
+    {
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "PlayerProjectiles")
+        {
+            //TakeDamage(collision.gameObject.GetComponent<Arrow>().damage);
+        }
+    }
 }
