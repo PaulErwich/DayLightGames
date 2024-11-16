@@ -12,30 +12,30 @@ public class SetupShopElement : MonoBehaviour
     public shopElement element;
     public Sprite icon;
 
-    Dictionary<shopUpgradeType, Dictionary<shopUpgradeTier, int>> upgradeDictionary = new Dictionary<shopUpgradeType, Dictionary<shopUpgradeTier, int>>()
+    Dictionary<statUpgradeType, Dictionary<shopUpgradeTier, int>> upgradeDictionary = new Dictionary<statUpgradeType, Dictionary<shopUpgradeTier, int>>()
     {
-        { shopUpgradeType.Health, new Dictionary<shopUpgradeTier, int>()
+        { statUpgradeType.Health, new Dictionary<shopUpgradeTier, int>()
             {
                 {shopUpgradeTier.Common, 5 },
                 {shopUpgradeTier.Uncommon, 10 },
                 { shopUpgradeTier.Rare, 15},
             }
         },
-        { shopUpgradeType.AttackSpeed, new Dictionary<shopUpgradeTier, int>()
+        { statUpgradeType.AttackSpeed, new Dictionary<shopUpgradeTier, int>()
             {
                 {shopUpgradeTier.Common, 1 },
                 {shopUpgradeTier.Uncommon, 2 },
                 { shopUpgradeTier.Rare, 3},
             }
         },
-        { shopUpgradeType.Speed, new Dictionary<shopUpgradeTier, int>()
+        { statUpgradeType.Speed, new Dictionary<shopUpgradeTier, int>()
             {
                 {shopUpgradeTier.Common, 1 },
                 {shopUpgradeTier.Uncommon, 2 },
                 { shopUpgradeTier.Rare, 3},
             }
         },
-        { shopUpgradeType.Armour, new Dictionary<shopUpgradeTier, int>()
+        { statUpgradeType.Armour, new Dictionary<shopUpgradeTier, int>()
             {
                 {shopUpgradeTier.Common, 1 },
                 {shopUpgradeTier.Uncommon, 2 },
@@ -88,7 +88,7 @@ public class SetupShopElement : MonoBehaviour
 public struct shopElement
 {
     public shopUpgradeTier tier;
-    public shopUpgradeType type;
+    public statUpgradeType type;
     public int goldCost;
     public int statIncrease;
 }

@@ -6,19 +6,14 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [Header("Attributes")]
+    public int hitPointsMaximum;
     public int hitPoints;
     public int speed;
     public int armour;
     private Rigidbody2D rb;
     private CircleCollider2D cc;
 
-    public Character(int _hitPoints, int _speed, int _armour)
-    {
-        hitPoints = _hitPoints;
-        speed = _speed;
-        armour = _armour;
-    }
-
+    // Apply a rigidbody and circle collider to the character
     protected virtual void Awake()
     {
         rb = gameObject.AddComponent<Rigidbody2D>();
@@ -26,6 +21,7 @@ public class Character : MonoBehaviour
         cc = gameObject.AddComponent<CircleCollider2D>();
     }
 
+    // Deal damage to the character - armour
     public virtual void TakeDamage(int amount)
     {
         if (amount < armour)
@@ -38,20 +34,23 @@ public class Character : MonoBehaviour
         }
     }
 
+    // Check if the character is dead
     public bool IsDead()
     {
         return hitPoints <= 0;
     }
 
+    // Deal buring damage over so many ticks
     public IEnumerator Burn(int amount, int ticks)
     {
         for (int i = 0; i < ticks ; i++)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
             TakeDamage(amount);
         }
     }
 
+    // Slow the character
     public IEnumerator Slow(float duration, int slowedSpeed)
     {
         int baseSpeed = speed;

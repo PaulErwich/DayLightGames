@@ -7,22 +7,32 @@ using UnityEngine.AI;
 public class Enemy : Character
 {
     [Header("Attributes")]
-    private int goldWorth;
+    public int goldWorth;
 
     NavMeshAgent agent;
 
-    private Enemy(int hitPoints, int speed, int armour, int goldWorth) : base(hitPoints, speed, armour) { }
+    // Set stats for the created enemy
+    public void SetUpEnemy(int _hitPoints = 10, int _speed = 4, int _armour = 1, int _goldWorth = 1)
+    {
+        hitPointsMaximum = _hitPoints;
+        hitPoints = _hitPoints;
+        speed = _speed;
+        armour = _armour;
+        goldWorth = _goldWorth;
+    }
 
+    // Take damage override
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
         if (IsDead())
         {
             Destroy(gameObject);
-            // Currency += goldWorth
+            Player.instance.GiveGold(goldWorth);
         }
     }
 
+    // Set the NavMesh agent on the enemy
     private void Start()
     {
         agent = gameObject.AddComponent<NavMeshAgent>();
@@ -37,6 +47,7 @@ public class Enemy : Character
         GetTargetPosition();
     }
 
+    // Set the target of the NavMesh
     private void GetTargetPosition()
     {
         Vector2 playerPos = Player.instance.transform.position;
@@ -45,18 +56,27 @@ public class Enemy : Character
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "PlayerProjectiles")
+        /*
+        if (collision.gameObject.tag == "playerArrow")
         {
-            /*
-            TakeDamage(collision.gameObject.GetComponent<Arrow>().damage);
-            switch (collision.evolve)
+            ArrowScript arrow = collision.gameObject.GetComponent<ArrowScript>();
+            TakeDamage(arrow.damage);
+            switch (arrow.evolve)
             {
                 case "Burn":
                     Burn(collision.evolve.ticks, collision.evolve.damage);
                     break;
             }
-            */
         }
+        else if (collision.gameObject.tag == "playerMelee")
+        {
+
+        }
+        else if (collision.gameObject.tag == "playerFire")
+        {
+
+        }
+        */
     }
 
     private void OnDestroy()
