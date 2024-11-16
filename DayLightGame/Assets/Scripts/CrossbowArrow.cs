@@ -8,13 +8,13 @@ public class CrossbowArrow : ArrowScript
     private int pierceTotal;
     private bool firstHit = false;
 
-    public BowScript bowScript;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Awake()
     {
         pierceCount = 0;
         pierceTotal = 3;
+
+        //damage = Crossbow Arrow Damage here
 
         if (enhance)
         {
@@ -32,7 +32,14 @@ public class CrossbowArrow : ArrowScript
         if (bowSpecial1 && firstHit)
         {
             firstHit = false;
+            //damage *= 2;
             //Increase damage by 100%
+        }
+
+        else if (bowSpecial1 && !firstHit)
+        {
+            //Return damage to normal value
+            //damage /= 2;
         }
 
         if (bowSpecial2)
@@ -45,11 +52,5 @@ public class CrossbowArrow : ArrowScript
             //Destroys the arrow on collision
             Destroy(gameObject);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

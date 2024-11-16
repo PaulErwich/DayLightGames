@@ -4,13 +4,14 @@ public class ElectricArrow : ArrowScript
 {
     //Jay
 
-    public BowScript bowScript;
     RaycastHit2D Hit;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Awake()
     {
         GetComponent<Rigidbody2D>().linearVelocity = transform.TransformDirection(new Vector2(10, 0));
+
+        //damage = Electric Arrow Damage here
 
         if (enhance)
         {
@@ -25,7 +26,7 @@ public class ElectricArrow : ArrowScript
 
             foreach (RaycastHit2D ray in Hit)
             {
-
+                //Apply Slow
             }
         }
     }
@@ -40,11 +41,5 @@ public class ElectricArrow : ArrowScript
             //Activate special effect 1
             //AOE Slow on enemy hit
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

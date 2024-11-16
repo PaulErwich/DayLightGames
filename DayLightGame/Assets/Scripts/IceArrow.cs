@@ -5,13 +5,14 @@ public class NewMonoBehaviourScript : ArrowScript
 {
     //Jay
 
-    public BowScript bowScript;
     RaycastHit2D Hit;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Awake()
     {
         GetComponent<Rigidbody2D>().linearVelocity = transform.TransformDirection(new Vector2(10, 0));
+
+        //damage = Ice Arrow Damage here
 
         if (enhance)
         {
@@ -35,7 +36,7 @@ public class NewMonoBehaviourScript : ArrowScript
 
             foreach (RaycastHit2D ray in Hit)
             {
-
+                //Apply freeze
             }
         }
 
