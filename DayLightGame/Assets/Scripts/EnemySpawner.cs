@@ -27,19 +27,24 @@ public class EnemySpawner : MonoBehaviour
         elite = RoomManager.instance.elite;
         boss = RoomManager.instance.boss;
 
-        elite.GetComponent<Enemy>().SetUpEnemy(30, 5, 3, 3);
-
         boss.GetComponent<Enemy>().SetUpEnemy(50, 5, 5, 10);
     }
 
-    public void StartSpawning(int totalSpawnCount, int additionalSpawningWaves, bool spawnElite, bool spawnBoss)
+    public void StartSpawning(int totalSpawnCount, int additionalSpawningWaves, int room)
     {
-        if (spawnElite)
+        if (room == 5)
         {
+            elite.GetComponent<Enemy>().SetUpEnemy(20, 5, 2, 3);
             SpawnElite(spawnLoactionsDuring);
             totalSpawnCount--;
         }
-        else if (spawnBoss)
+        else if (room == 11)
+        {
+            elite.GetComponent<Enemy>().SetUpEnemy(30, 5, 3, 3);
+            SpawnElite(spawnLoactionsDuring);
+            totalSpawnCount--;
+        }
+        else if (room == 16)
         {
             SpawnBoss(spawnLoactionsDuring);
             totalSpawnCount--;

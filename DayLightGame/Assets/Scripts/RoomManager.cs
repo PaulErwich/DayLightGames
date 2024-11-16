@@ -11,7 +11,7 @@ public class RoomManager : MonoBehaviour
     public GameObject elite;
     public GameObject boss;
 
-    private int currentRoom = 5;
+    private int currentRoom = 1;
     private float scalingFactor = 1.25f;
     private int spawnCount = 15;
     private int additionalSpawningWaves = 2;
@@ -58,7 +58,7 @@ public class RoomManager : MonoBehaviour
         enemiesThisRoom = Mathf.RoundToInt(spawnCount * Mathf.Pow(scalingFactor, currentRoom - 1));
         int spawningWavesThisRoom = Mathf.RoundToInt(additionalSpawningWaves * Mathf.Pow(scalingFactor, currentRoom - 1));
 
-        enemySpawner.StartSpawning(enemiesThisRoom, spawningWavesThisRoom, false, false);
+        enemySpawner.StartSpawning(enemiesThisRoom, spawningWavesThisRoom, currentRoom);
     }
 
     private void EliteSpawning()
@@ -66,7 +66,7 @@ public class RoomManager : MonoBehaviour
         enemiesThisRoom = Mathf.RoundToInt(spawnCount * Mathf.Pow(scalingFactor, currentRoom - 1));
         int spawningWavesThisRoom = Mathf.RoundToInt(additionalSpawningWaves * Mathf.Pow(scalingFactor, currentRoom - 1));
 
-        enemySpawner.StartSpawning(enemiesThisRoom, spawningWavesThisRoom, true, false);
+        enemySpawner.StartSpawning(enemiesThisRoom, spawningWavesThisRoom, currentRoom);
     }
 
     private void BossSpawning()
@@ -74,7 +74,7 @@ public class RoomManager : MonoBehaviour
         enemiesThisRoom = Mathf.RoundToInt(spawnCount * Mathf.Pow(scalingFactor, currentRoom - 1));
         int spawningWavesThisRoom = Mathf.RoundToInt(additionalSpawningWaves * Mathf.Pow(scalingFactor, currentRoom - 1));
 
-        enemySpawner.StartSpawning(enemiesThisRoom, spawningWavesThisRoom, false, true);
+        enemySpawner.StartSpawning(enemiesThisRoom, spawningWavesThisRoom, currentRoom);
     }
 
     private void Update()
