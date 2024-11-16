@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6084711936022183385, guid: 8f6dd79aeb9bbc24d90138ad32c0e18b, type: 3}
+  m_Sprite: {fileID: -8630923909508717717, guid: 29bbbebb3288ffe4cbb3a69fd6011b79, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1938,7 +1938,7 @@ PrefabInstance:
     - target: {fileID: 2392701336542593461, guid: db81fa3f5193a224599082697de98a3f, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: -6084711936022183385, guid: 8f6dd79aeb9bbc24d90138ad32c0e18b, type: 3}
+      objectReference: {fileID: -8630923909508717717, guid: 29bbbebb3288ffe4cbb3a69fd6011b79, type: 3}
     - target: {fileID: 3451170694583117933, guid: db81fa3f5193a224599082697de98a3f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2083,6 +2083,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5910210216090597831, guid: db81fa3f5193a224599082697de98a3f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -8630923909508717717, guid: 29bbbebb3288ffe4cbb3a69fd6011b79, type: 3}
     - target: {fileID: 7543676202104305651, guid: db81fa3f5193a224599082697de98a3f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2160,7 +2164,7 @@ PrefabInstance:
     - target: {fileID: 2392701336542593461, guid: db81fa3f5193a224599082697de98a3f, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 3428391033546482049, guid: c9b2b5a8146a829448a4addc20a811be, type: 3}
+      objectReference: {fileID: -2560753938018797915, guid: 0bf1e1073c910d741ab8350430ad2f8d, type: 3}
     - target: {fileID: 2392701336542593461, guid: db81fa3f5193a224599082697de98a3f, type: 3}
       propertyPath: element.type
       value: 2
@@ -2370,7 +2374,7 @@ PrefabInstance:
     - target: {fileID: 2392701336542593461, guid: db81fa3f5193a224599082697de98a3f, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 4128238260825712819, guid: f306da0c6a871f24198e1e8a0215627b, type: 3}
+      objectReference: {fileID: 8924663538930460010, guid: 1ef67efdc3e1fbe41a639eb20764e73c, type: 3}
     - target: {fileID: 2392701336542593461, guid: db81fa3f5193a224599082697de98a3f, type: 3}
       propertyPath: element.type
       value: 3
@@ -2580,7 +2584,7 @@ PrefabInstance:
     - target: {fileID: 2392701336542593461, guid: db81fa3f5193a224599082697de98a3f, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 8159752753428473758, guid: 199b26407d38d194f9ab6362723c76fa, type: 3}
+      objectReference: {fileID: 7812082550397714683, guid: 603ce82d74e634e41815ad642cb050ae, type: 3}
     - target: {fileID: 2392701336542593461, guid: db81fa3f5193a224599082697de98a3f, type: 3}
       propertyPath: element.type
       value: 1

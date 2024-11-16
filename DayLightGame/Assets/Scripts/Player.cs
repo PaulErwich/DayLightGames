@@ -32,7 +32,7 @@ public class Player : Character
     {
         switch (type)
         {
-            case statUpgradeType.Health:
+            case statUpgradeType.MaxHealth:
                 hitPointsMaximum += amount;
                 hitPoints += amount;
                 break;

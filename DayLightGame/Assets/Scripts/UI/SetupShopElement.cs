@@ -19,7 +19,7 @@ public class SetupShopElement : MonoBehaviour
 
     Dictionary <statUpgradeType, Dictionary<shopUpgradeTier, int>> upgradeDictionary = new Dictionary<statUpgradeType, Dictionary<shopUpgradeTier, int>>()
     {
-        { statUpgradeType.Health, new Dictionary<shopUpgradeTier, int>()
+        { statUpgradeType.MaxHealth, new Dictionary<shopUpgradeTier, int>()
             {
                 {shopUpgradeTier.Common, 5 },
                 {shopUpgradeTier.Uncommon, 10 },
@@ -127,7 +127,7 @@ public enum shopUpgradeTier
 
 public enum statUpgradeType
 {
-    Health,
+    MaxHealth,
     AttackSpeed,
     Speed,
     Armour,

@@ -52,7 +52,10 @@ public class RestoreHealthUI : MonoBehaviour
         if (Player.instance.GetGold() > 0 && Player.instance.GetMissingHealth() > 0)
             image.color = available;
         else
+        {
             image.color = unavailable;
+            button.interactable = false;
+        }
     }
 
     void CalculateCost()
