@@ -26,6 +26,10 @@ public class EnemySpawner : MonoBehaviour
         enemy = RoomManager.instance.enemy;
         elite = RoomManager.instance.elite;
         boss = RoomManager.instance.boss;
+
+        elite.GetComponent<Enemy>().SetUpEnemy(30, 5, 3, 3);
+
+        boss.GetComponent<Enemy>().SetUpEnemy(50, 5, 5, 10);
     }
 
     public void StartSpawning(int totalSpawnCount, int additionalSpawningWaves, bool spawnElite, bool spawnBoss)

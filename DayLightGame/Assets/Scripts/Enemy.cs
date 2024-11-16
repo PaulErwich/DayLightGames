@@ -7,11 +7,18 @@ using UnityEngine.AI;
 public class Enemy : Character
 {
     [Header("Attributes")]
-    private int goldWorth;
+    public int goldWorth;
 
     NavMeshAgent agent;
 
-    private Enemy(int hitPoints, int speed, int armour, int goldWorth) : base(hitPoints, speed, armour) { }
+    public void SetUpEnemy(int _hitPoints = 10, int _speed = 4, int _armour = 1, int _goldWorth = 1)
+    {
+        hitPointsMaximum = _hitPoints;
+        hitPoints = _hitPoints;
+        speed = _speed;
+        armour = _armour;
+        goldWorth = _goldWorth;
+    }
 
     public override void TakeDamage(int amount)
     {
@@ -19,7 +26,7 @@ public class Enemy : Character
         if (IsDead())
         {
             Destroy(gameObject);
-            // Currency += goldWorth
+            Player.instance.GiveGold(goldWorth);
         }
     }
 
@@ -45,18 +52,27 @@ public class Enemy : Character
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "PlayerProjectiles")
+        /*
+        if (collision.gameObject.tag == "playerArrow")
         {
-            /*
-            TakeDamage(collision.gameObject.GetComponent<Arrow>().damage);
-            switch (collision.evolve)
+            ArrowScript arrow = collision.gameObject.GetComponent<ArrowScript>();
+            TakeDamage(arrow.damage);
+            switch (arrow.evolve)
             {
                 case "Burn":
                     Burn(collision.evolve.ticks, collision.evolve.damage);
                     break;
             }
-            */
         }
+        else if (collision.gameObject.tag == "playerMelee")
+        {
+
+        }
+        else if (collision.gameObject.tag == "playerFire")
+        {
+
+        }
+        */
     }
 
     private void OnDestroy()

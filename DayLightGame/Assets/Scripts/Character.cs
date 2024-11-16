@@ -6,18 +6,12 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [Header("Attributes")]
+    public int hitPointsMaximum;
     public int hitPoints;
     public int speed;
     public int armour;
     private Rigidbody2D rb;
     private CircleCollider2D cc;
-
-    public Character(int _hitPoints, int _speed, int _armour)
-    {
-        hitPoints = _hitPoints;
-        speed = _speed;
-        armour = _armour;
-    }
 
     protected virtual void Awake()
     {

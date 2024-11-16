@@ -9,7 +9,7 @@ public class Player : Character
 
     private Vector2 move;
 
-    private Player(int hitPoints, int speed, int armour) : base(hitPoints, speed, armour) { }
+    private int gold;
 
     protected override void Awake()
     {
@@ -22,6 +22,44 @@ public class Player : Character
             Destroy(gameObject);
         }
         base.Awake();
+    }
+
+    public void StatUpgrade(statUpgradeType type, int amount)
+    {
+        switch (type)
+        {
+            case statUpgradeType.Health:
+                hitPointsMaximum += amount;
+                hitPoints += amount;
+                break;
+            case statUpgradeType.AttackSpeed:
+                // On weapon
+                break;
+            case statUpgradeType.Speed:
+                speed += amount;
+                break;
+            case statUpgradeType.Armour:
+                armour += amount;
+                break;
+        }
+    }
+
+    public bool TakeGold(int amount)
+    {
+        if (gold >= amount)
+        {
+            gold -= amount;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void GiveGold(int amount)
+    {
+        gold += amount;
     }
 
     private void OnMove(InputValue value)
@@ -56,9 +94,15 @@ public class Player : Character
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "EnemyProjectiles")
+        /*
+        if (collision.gameObject.tag == "enemyArrow")
         {
-            //TakeDamage(collision.gameObject.GetComponent<Arrow>().damage);
+            TakeDamage(collision.gameObject.GetComponent<ArrowScript>().damage);
         }
+        else if (collision.gameObject.tag == "enemyMelee")
+        {
+            TakeDamage(collision.gameObject.GetComponent<Sword>().damage);
+        }
+        */
     }
 }

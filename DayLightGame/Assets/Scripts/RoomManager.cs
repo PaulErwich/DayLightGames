@@ -37,7 +37,7 @@ public class RoomManager : MonoBehaviour
         NextRoom();
     }
 
-    private void NextRoom()
+    public void NextRoom()
     {
         switch (currentRoom)
         {
@@ -95,7 +95,7 @@ public class RoomManager : MonoBehaviour
                 break;
             case 3: case 6: case 9: case 12: case 15:
                 // Standard Wave
-                // Shop at end
+                // Shop
                 break;
             case 5: case 11:
                 // Elite Wave
