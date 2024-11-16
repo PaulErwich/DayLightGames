@@ -428,10 +428,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1000968021227325503, guid: 74929a3985d416247ac1f502e371d24f, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 997463443}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74929a3985d416247ac1f502e371d24f, type: 3}
 --- !u!1 &566171229
 GameObject:
@@ -1831,24 +1828,6 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
---- !u!1 &997463438 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1000968021227325503, guid: 74929a3985d416247ac1f502e371d24f, type: 3}
-  m_PrefabInstance: {fileID: 229420237}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &997463443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997463438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a4aed21f60c1540b167b3d74638ac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 3946195582705321039, guid: e64a9bdee24a3b24080924d0841ce36a, type: 3}
 --- !u!1 &1115088864
 GameObject:
   m_ObjectHideFlags: 0
@@ -2014,6 +1993,54 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1131058627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1131058630}
+  - component: {fileID: 1131058629}
+  m_Layer: 0
+  m_Name: Room Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1131058629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131058627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 700b87cd29eab334d93b71c61fcb394a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 3946195582705321039, guid: e64a9bdee24a3b24080924d0841ce36a, type: 3}
+  elite: {fileID: 3946195582705321039, guid: 83e4dce51d3059e41a68668872fda482, type: 3}
+  boss: {fileID: 3946195582705321039, guid: d587523e26638f141bf6d683b99ef769, type: 3}
+  enemiesDestroyed: 0
+--- !u!4 &1131058630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131058627}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2855686, y: 0.41866958, z: -6.288145}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180422041
 GameObject:
   m_ObjectHideFlags: 0
@@ -5894,5 +5921,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1180422044}
   - {fileID: 813250552}
+  - {fileID: 1131058630}
   - {fileID: 566171231}
   - {fileID: 229420237}

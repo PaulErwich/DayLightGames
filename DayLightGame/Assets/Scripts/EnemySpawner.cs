@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 //Max
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemy;
+    private GameObject enemy;
+    private GameObject elite;
+    private GameObject boss;
 
     Vector2[] spawnLocationsStart = { 
         new Vector2(-21, 11),  new Vector2(-13, 11), new Vector2(7, 11), new Vector2(23, 11), new Vector2(13, -1), 
@@ -18,50 +21,77 @@ public class EnemySpawner : MonoBehaviour
         new Vector2(-21, -11), new Vector2(21, -9)
     };
 
-    private int totalSpawnCount = 40;
-    private int remainingSpawnCount = 0;
-    private int additionalSpawningWaves = 4;
-    private int wave = 1;
-    private float scalingFactor = 1.25f;
+    private void Awake()
+    {
+        enemy = RoomManager.instance.enemy;
+        elite = RoomManager.instance.elite;
+        boss = RoomManager.instance.boss;
+    }
 
-    private void Start()
+    public void StartSpawning(int totalSpawnCount, int additionalSpawningWaves, bool spawnElite, bool spawnBoss)
     {
         int spawnStart = Mathf.RoundToInt(totalSpawnCount / (additionalSpawningWaves / 2));
-        remainingSpawnCount = totalSpawnCount - spawnStart;
+        int delayedSpawnCount = totalSpawnCount - spawnStart;
 
         SpawnEnemies(spawnStart, spawnLocationsStart);
 
-        remainingSpawnCount /= additionalSpawningWaves;
+        delayedSpawnCount /= additionalSpawningWaves;
 
-        StartCoroutine(Delay());
+        StartCoroutine(Delay(additionalSpawningWaves, delayedSpawnCount));
+
+        if (spawnElite)
+        {
+            SpawnElite(spawnLoactionsDuring);
+        }
+        else if (spawnBoss)
+        {
+            SpawnBoss(spawnLoactionsDuring);
+        }
     }
 
     private void SpawnEnemies(int spawnCount, Vector2[] spawnLocations)
     {
         for (int i = 0; i < spawnCount; i++)
         {
-            int index = Random.Range(0, spawnLocations.Length);
-            float randomX = Random.Range(-1.5f, 1.5f);
-            float randomY = Random.Range(-1.5f, 1.5f);
-            
-            float spawnX = spawnLocations[index].x + randomX;
-            float spawnY = spawnLocations[index].y + randomY;
-
-            Instantiate<GameObject>(enemy, new Vector3(spawnX, spawnY, 0f), Quaternion.identity);
+            Vector2 location = GetLocation(spawnLocations);
+            Instantiate<GameObject>(enemy, new Vector3(location.x, location.y, 0f), Quaternion.identity);
         }
     }
 
-    private IEnumerator Delay()
+    private void SpawnElite(Vector2[] spawnLocations)
+    {
+        Vector2 location = GetLocation(spawnLocations);
+        Instantiate<GameObject>(elite, new Vector3(location.x, location.y, 0f), Quaternion.identity);
+    }
+    private void SpawnBoss(Vector2[] spawnLocations)
+    {
+        Vector2 location = GetLocation(spawnLocations);
+        Instantiate<GameObject>(boss, new Vector3(location.x, location.y, 0f), Quaternion.identity);
+    }
+
+    private Vector2 GetLocation(Vector2[] spawnLocations)
+    {
+        int index = Random.Range(0, spawnLocations.Length);
+        float randomX = Random.Range(-1.5f, 1.5f);
+        float randomY = Random.Range(-1.5f, 1.5f);
+
+        float spawnX = spawnLocations[index].x + randomX;
+        float spawnY = spawnLocations[index].y + randomY;
+
+        return new Vector2(spawnX, spawnY);
+    }
+
+    private IEnumerator Delay(int additionalSpawningWaves, int delayedSpawnCount)
     {
         for (int i = 0; i < additionalSpawningWaves; i++)
         {
-            yield return StartCoroutine(DelayedSpawning());
+            yield return StartCoroutine(DelayedSpawning(delayedSpawnCount));
         }
     }
 
-    private IEnumerator DelayedSpawning()
+    private IEnumerator DelayedSpawning(int delayedSpawnCount)
     {
         yield return new WaitForSeconds(3);
-        SpawnEnemies(remainingSpawnCount, spawnLoactionsDuring);
+        SpawnEnemies(delayedSpawnCount, spawnLoactionsDuring);
     }
 }
