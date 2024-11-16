@@ -101,7 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac92bebd33ac53045b9435146219f1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 0
+  hitPointsMaximum: 10
+  hitPoints: 10
   speed: 6
   armour: 1
 --- !u!114 &1378768938127390886

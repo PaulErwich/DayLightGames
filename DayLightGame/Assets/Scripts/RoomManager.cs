@@ -39,37 +39,12 @@ public class RoomManager : MonoBehaviour
 
     public void NextRoom()
     {
-        switch (currentRoom)
-        {
-            default:
-                DefaultSpawning();
-                break;
-            case 5: case 11:
-                EliteSpawning();
-                break;
-            case 16:
-                BossSpawning();
-                break;
-        }
+        Player.instance.transform.position = new Vector2(1, -12);
+        StartRoom();
     }
 
-    private void DefaultSpawning()
-    {
-        enemiesThisRoom = Mathf.RoundToInt(spawnCount * Mathf.Pow(scalingFactor, currentRoom - 1));
-        int spawningWavesThisRoom = Mathf.RoundToInt(additionalSpawningWaves * Mathf.Pow(scalingFactor, currentRoom - 1));
-
-        enemySpawner.StartSpawning(enemiesThisRoom, spawningWavesThisRoom, currentRoom);
-    }
-
-    private void EliteSpawning()
-    {
-        enemiesThisRoom = Mathf.RoundToInt(spawnCount * Mathf.Pow(scalingFactor, currentRoom - 1));
-        int spawningWavesThisRoom = Mathf.RoundToInt(additionalSpawningWaves * Mathf.Pow(scalingFactor, currentRoom - 1));
-
-        enemySpawner.StartSpawning(enemiesThisRoom, spawningWavesThisRoom, currentRoom);
-    }
-
-    private void BossSpawning()
+    // Scale the amount of enemies and additional waves with the current room number
+    private void StartRoom()
     {
         enemiesThisRoom = Mathf.RoundToInt(spawnCount * Mathf.Pow(scalingFactor, currentRoom - 1));
         int spawningWavesThisRoom = Mathf.RoundToInt(additionalSpawningWaves * Mathf.Pow(scalingFactor, currentRoom - 1));
@@ -85,6 +60,7 @@ public class RoomManager : MonoBehaviour
         }
     }
 
+    // If the room needs a shop or elite rewards
     public void RoomEnd()
     {
         switch (currentRoom)

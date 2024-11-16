@@ -24,6 +24,7 @@ public class Player : Character
         base.Awake();
     }
 
+    // Stat upgrades using the shop and level up menus
     public void StatUpgrade(statUpgradeType type, int amount)
     {
         switch (type)
@@ -44,6 +45,7 @@ public class Player : Character
         }
     }
 
+    // Check if there is enough gold and remove if true
     public bool TakeGold(int amount)
     {
         if (gold >= amount)

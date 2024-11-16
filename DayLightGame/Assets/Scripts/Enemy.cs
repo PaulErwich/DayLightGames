@@ -11,6 +11,7 @@ public class Enemy : Character
 
     NavMeshAgent agent;
 
+    // Set stats for the created enemy
     public void SetUpEnemy(int _hitPoints = 10, int _speed = 4, int _armour = 1, int _goldWorth = 1)
     {
         hitPointsMaximum = _hitPoints;
@@ -20,6 +21,7 @@ public class Enemy : Character
         goldWorth = _goldWorth;
     }
 
+    // Take damage override
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
@@ -30,6 +32,7 @@ public class Enemy : Character
         }
     }
 
+    // Set the NavMesh agent on the enemy
     private void Start()
     {
         agent = gameObject.AddComponent<NavMeshAgent>();
@@ -44,6 +47,7 @@ public class Enemy : Character
         GetTargetPosition();
     }
 
+    // Set the target of the NavMesh
     private void GetTargetPosition()
     {
         Vector2 playerPos = Player.instance.transform.position;

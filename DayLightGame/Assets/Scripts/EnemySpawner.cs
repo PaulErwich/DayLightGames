@@ -11,16 +11,19 @@ public class EnemySpawner : MonoBehaviour
     private GameObject elite;
     private GameObject boss;
 
+    // Starting enemy spawn locations
     Vector2[] spawnLocationsStart = { 
         new Vector2(-21, 11),  new Vector2(-13, 11), new Vector2(7, 11), new Vector2(23, 11), new Vector2(13, -1), 
         new Vector2(-15, 1), new Vector2(-21, -11), new Vector2(-15, -11), new Vector2(13, -9), new Vector2(21, -9) 
     };
 
+    // Enemy spawn locations for during the room
     Vector2[] spawnLoactionsDuring = {
         new Vector2(-21, 11), new Vector2(23, 11),
         new Vector2(-21, -11), new Vector2(21, -9)
     };
 
+    // Create enemy, elite, and boss variants
     private void Awake()
     {
         enemy = RoomManager.instance.enemy;
@@ -32,6 +35,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void StartSpawning(int totalSpawnCount, int additionalSpawningWaves, int room)
     {
+        // Check if the room requires an elite or boss
         if (room == 5)
         {
             elite.GetComponent<Enemy>().SetUpEnemy(20, 5, 2, 3);
@@ -50,6 +54,7 @@ public class EnemySpawner : MonoBehaviour
             totalSpawnCount--;
         }
 
+        // Logic for spawning an amount of enemies at the start and then also continuously spawning over a certain number of waves
         int spawnStart = totalSpawnCount / (int)(additionalSpawningWaves / 1.5f);
         int delayedSpawnCount = totalSpawnCount - spawnStart;
         int remainder = delayedSpawnCount % additionalSpawningWaves;
@@ -84,6 +89,7 @@ public class EnemySpawner : MonoBehaviour
         Instantiate<GameObject>(boss, new Vector3(location.x, location.y, 0f), Quaternion.identity);
     }
 
+    // Get a random location for the enemy spawn
     private Vector2 GetLocation(Vector2[] spawnLocations)
     {
         int index = Random.Range(0, spawnLocations.Length);
@@ -96,6 +102,7 @@ public class EnemySpawner : MonoBehaviour
         return new Vector2(spawnX, spawnY);
     }
 
+    // Delay factory between spawning waves
     private IEnumerator Delay(int additionalSpawningWaves, int delayedSpawnCount)
     {
         for (int i = 0; i < additionalSpawningWaves; i++)
