@@ -64,6 +64,33 @@ public class Player : Character
         gold += amount;
     }
 
+    public int GetCurrentHealth()
+    {
+        return hitPoints;
+    }
+
+    public int GetMaxHealth()
+    {
+        return hitPointsMaximum;
+    }
+
+    public int GetMissingHealth()
+    {
+        return hitPointsMaximum - hitPoints;
+    }
+
+    public void RestoreHealth(int amount)
+    {
+        if (amount < GetMissingHealth())
+        {
+            hitPoints += amount;
+        }
+        else
+        {
+            hitPoints = hitPointsMaximum;
+        }
+    }
+
     private void OnMove(InputValue value)
     {
         move = value.Get<Vector2>();
