@@ -64,6 +64,11 @@ public class Player : Character
         gold += amount;
     }
 
+    public int GetGold()
+    {
+        return gold;
+    }
+
     public int GetCurrentHealth()
     {
         return hitPoints;
