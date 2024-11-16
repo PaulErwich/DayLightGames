@@ -30,23 +30,28 @@ public class EnemySpawner : MonoBehaviour
 
     public void StartSpawning(int totalSpawnCount, int additionalSpawningWaves, bool spawnElite, bool spawnBoss)
     {
-        int spawnStart = Mathf.RoundToInt(totalSpawnCount / (additionalSpawningWaves / 2));
+        if (spawnElite)
+        {
+            SpawnElite(spawnLoactionsDuring);
+            totalSpawnCount--;
+        }
+        else if (spawnBoss)
+        {
+            SpawnBoss(spawnLoactionsDuring);
+            totalSpawnCount--;
+        }
+
+        int spawnStart = totalSpawnCount / (int)(additionalSpawningWaves / 1.5f);
         int delayedSpawnCount = totalSpawnCount - spawnStart;
+        int remainder = delayedSpawnCount % additionalSpawningWaves;
+        spawnStart += remainder;
+        delayedSpawnCount -= remainder;
 
         SpawnEnemies(spawnStart, spawnLocationsStart);
 
         delayedSpawnCount /= additionalSpawningWaves;
 
         StartCoroutine(Delay(additionalSpawningWaves, delayedSpawnCount));
-
-        if (spawnElite)
-        {
-            SpawnElite(spawnLoactionsDuring);
-        }
-        else if (spawnBoss)
-        {
-            SpawnBoss(spawnLoactionsDuring);
-        }
     }
 
     private void SpawnEnemies(int spawnCount, Vector2[] spawnLocations)
@@ -63,6 +68,7 @@ public class EnemySpawner : MonoBehaviour
         Vector2 location = GetLocation(spawnLocations);
         Instantiate<GameObject>(elite, new Vector3(location.x, location.y, 0f), Quaternion.identity);
     }
+
     private void SpawnBoss(Vector2[] spawnLocations)
     {
         Vector2 location = GetLocation(spawnLocations);

@@ -14,7 +14,7 @@ public class RoomManager : MonoBehaviour
     private int currentRoom = 5;
     private float scalingFactor = 1.25f;
     private int spawnCount = 15;
-    private int additionalSpawningWaves = 4;
+    private int additionalSpawningWaves = 2;
     private int enemiesThisRoom;
 
     public int enemiesDestroyed = 0;

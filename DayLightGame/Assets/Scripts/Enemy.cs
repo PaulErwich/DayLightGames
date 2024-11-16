@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -61,10 +62,5 @@ public class Enemy : Character
     private void OnDestroy()
     {
         RoomManager.instance.enemiesDestroyed++;
-    }
-
-    public void Burn()
-    {
-
     }
 }
