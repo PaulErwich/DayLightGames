@@ -46,8 +46,6 @@ public class BowScript : MonoBehaviour
 
             //Instantiate and shoot arrow
             GameObject instantiatedArrow = Instantiate(arrow[(int)evolve], bow.position, player.rotation);
-
-            
         }
 
         //If the bow has not been charged doesnt shoot
