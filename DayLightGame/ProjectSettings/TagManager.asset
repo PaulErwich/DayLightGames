@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - enemyArrow
+  - enemyMelee
+  - playerArrow
+  - playerMelee
+  - playerFire
   layers:
   - Default
   - TransparentFX
@@ -41,7 +46,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: sprite
+  - name: Sprite
     uniqueID: 2973609333
     locked: 0
   m_RenderingLayers:
