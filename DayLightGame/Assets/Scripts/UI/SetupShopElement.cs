@@ -12,7 +12,12 @@ public class SetupShopElement : MonoBehaviour
     public shopElement element;
     public Sprite icon;
 
-    Dictionary<statUpgradeType, Dictionary<shopUpgradeTier, int>> upgradeDictionary = new Dictionary<statUpgradeType, Dictionary<shopUpgradeTier, int>>()
+    private Button button;
+    private Color available = new Color(0, 255, 0, 200);
+    private Color unavailable = new Color(255, 0, 0, 200);
+    Image[] images;
+
+    Dictionary <statUpgradeType, Dictionary<shopUpgradeTier, int>> upgradeDictionary = new Dictionary<statUpgradeType, Dictionary<shopUpgradeTier, int>>()
     {
         { statUpgradeType.Health, new Dictionary<shopUpgradeTier, int>()
             {
@@ -47,6 +52,8 @@ public class SetupShopElement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        button = GetComponent<Button>();
+
         switch (UnityEngine.Random.Range(0, 100))
         {
             case <= ((int)shopUpgradeTier.Common):
@@ -68,7 +75,21 @@ public class SetupShopElement : MonoBehaviour
         textBoxes[0].text = element.tier.ToString() + ": " + element.type.ToString();
         textBoxes[1].text = "Cost: " + element.goldCost.ToString() + " Gold";
 
-        GetComponentsInChildren<Image>()[1].sprite = icon;
+       images  = GetComponentsInChildren<Image>();
+
+        if (Player.instance.GetGold() >= element.goldCost)
+        {
+            images[0].color = available;
+            button.interactable = true;
+        }
+        else
+        {
+            images[0].color = unavailable;
+            button.interactable = false;
+        }
+
+
+        images[1].sprite = icon;
     }
 
     // Update is called once per frame
@@ -79,8 +100,12 @@ public class SetupShopElement : MonoBehaviour
 
     public void UpgradePlayer()
     {
-        // Upgrade player stat
-        int value = upgradeDictionary[element.type][element.tier];
+        if (Player.instance.TakeGold(element.goldCost))
+        {
+            button.interactable = false;
+            images[0].color = unavailable;
+            Player.instance.StatUpgrade(element.type, upgradeDictionary[element.type][element.tier]);
+        }
     }
 }
 
