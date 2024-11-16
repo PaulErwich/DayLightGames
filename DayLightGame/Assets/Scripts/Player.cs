@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 
 //Max
 
 public class Player : Character
 {
     public static Player instance;
+
+    [SerializeField] private Transform pivotPoint;
 
     private Vector2 move;
 
@@ -115,6 +118,10 @@ public class Player : Character
     {
         Vector2 currentPos = transform.position;
         transform.position = Vector2.MoveTowards(transform.position, move + currentPos, speed * Time.deltaTime);
+
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z += 90;
+        transform.LookAt(mousePos, new Vector3(0, 0, -1));
     }
 
     public override void TakeDamage(int amount)

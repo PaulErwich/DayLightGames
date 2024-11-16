@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 //Max
 
@@ -9,7 +10,9 @@ public class Enemy : Character
     [Header("Attributes")]
     public int goldWorth;
 
-    NavMeshAgent agent;
+    [SerializeField] private Transform pivotPoint;
+
+    NavMeshAgent agent;    
 
     // Set stats for the created enemy
     public void SetUpEnemy(int _hitPoints = 10, int _speed = 4, int _armour = 1, int _goldWorth = 1)
@@ -40,11 +43,15 @@ public class Enemy : Character
         agent.updateUpAxis = false;
         agent.acceleration = 50;
         agent.speed = speed;
+        agent.angularSpeed = speed;
     }
 
     private void FixedUpdate()
     {
         GetTargetPosition();
+
+        // Only rotates the z axis
+        
     }
 
     // Set the target of the NavMesh
@@ -52,6 +59,15 @@ public class Enemy : Character
     {
         Vector2 playerPos = Player.instance.transform.position;
         agent.SetDestination(playerPos);
+
+        Vector3 velocity = agent.velocity;
+        velocity.z = 0;
+
+        if (velocity != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, velocity);
+            pivotPoint.rotation = Quaternion.RotateTowards(pivotPoint.rotation, targetRotation, 3);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

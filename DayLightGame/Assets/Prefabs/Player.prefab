@@ -138,6 +138,7 @@ MonoBehaviour:
   hitPoints: 10
   speed: 6
   armour: 1
+  pivotPoint: {fileID: 1234230667221087793}
 --- !u!114 &1378768938127390886
 MonoBehaviour:
   m_ObjectHideFlags: 0
