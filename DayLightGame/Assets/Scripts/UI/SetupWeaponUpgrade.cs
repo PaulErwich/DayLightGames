@@ -8,14 +8,14 @@ public class SetupWeaponUpgrade : MonoBehaviour
 {
     // Paul
 
-    public upgradeElement element;
+    public upgradeElementBow element;
     private Button button;
     private TextMeshProUGUI[] textBoxes;
     private Image[] images;
 
     public Sprite[] bowUpgradeIcons;
 
-    static List<EvolveTypeBow> currentUpgradeOptions = new List<EvolveTypeBow>() { EvolveTypeBow.Default };
+    static List<int> currentUpgradeOptions = new List<int>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,20 +23,6 @@ public class SetupWeaponUpgrade : MonoBehaviour
         button = GetComponent<Button>();
         textBoxes = GetComponentsInChildren<TextMeshProUGUI>();
         images = GetComponentsInChildren<Image>();
-
-        // 1 is to ignore Default
-        EvolveTypeBow type = (EvolveTypeBow)UnityEngine.Random.Range(1, System.Enum.GetValues(typeof(EvolveTypeBow)).Length);
-        if (currentUpgradeOptions.Contains(type))
-        {
-            // Regenerate type until it's a new one
-            while (currentUpgradeOptions.Contains(type))
-                type = (EvolveTypeBow)UnityEngine.Random.Range(1, System.Enum.GetValues(typeof(EvolveTypeBow)).Length);
-            currentUpgradeOptions.Add(type);
-        }
-        else
-            currentUpgradeOptions.Add(type);
-
-        element = UpgradeDictionaries.bowUpgradeDictionary[type];
 
         element.icon = bowUpgradeIcons[((int)element.type) - 1];
         images[0].color = element.color;
@@ -46,9 +32,43 @@ public class SetupWeaponUpgrade : MonoBehaviour
         textBoxes[1].text = element.description;
     }
 
-    public void SetupUpgradeIcon()
+    public void SetupUpgradeIcon(weaponType _wepeonType, upgradeType _upgradeType)
     {
+        switch(_wepeonType)
+        {
+            case weaponType.melee:
+                switch (_upgradeType)
+                {
+                    case upgradeType.evolve:
 
+                        break;
+                    case upgradeType.addon:
+                        break;
+                }
+                break;
+            case weaponType.ranged:
+                switch(_upgradeType)
+                {
+                    case upgradeType.evolve:
+                        // 1 is to ignore Default
+                        int type = UnityEngine.Random.Range(1, System.Enum.GetValues(typeof(EvolveTypeBow)).Length);
+                        if (currentUpgradeOptions.Contains(type))
+                        {
+                            // Regenerate type until it's a new one
+                            while (currentUpgradeOptions.Contains(type))
+                                type = UnityEngine.Random.Range(1, System.Enum.GetValues(typeof(EvolveTypeBow)).Length);
+                            currentUpgradeOptions.Add(type);
+                        }
+                        else
+                            currentUpgradeOptions.Add(type);
+
+                        element = UpgradeDictionaries.bowUpgradeDictionary[(EvolveTypeBow)type];
+                        break;
+                    case upgradeType.addon:
+                        break;
+                }
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -59,23 +79,54 @@ public class SetupWeaponUpgrade : MonoBehaviour
 }
 
 [Serializable]
-public struct upgradeElement
+public class upgradeElement
 {
-    public upgradeElement(EvolveTypeBow _type, Color _color, string _desc)
+    public upgradeElement(Color _color, string _desc)
     {
-        type = _type;
         color = _color;
         description = _desc;
         icon = null;
     }
-    public EvolveTypeBow type;
     public Color color;
     public string description;
     public Sprite icon;
+}
+
+public class upgradeElementBow : upgradeElement
+{
+    public upgradeElementBow(EvolveTypeBow _type, Color _color, string _desc) : base(_color, _desc)
+    {
+        type = _type;
+    }
+    public EvolveTypeBow type;
+}
+
+public class upgradeElementSword : upgradeElement
+{
+    public upgradeElementSword(EvolveTypeSword _type, Color _color, string _desc) : base(_color, _desc)
+    {
+        type = _type;
+    }
+    EvolveTypeSword type;
 }
 
 public enum weaponType
 {
     melee,
     ranged
+}
+
+public enum upgradeType
+{
+    evolve,
+    addon
+}
+
+public enum extraUpgradeType
+{
+    specialOne,
+    specialTwo,
+    enhance,
+    damage,
+    attackSpeed
 }

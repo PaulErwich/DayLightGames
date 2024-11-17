@@ -163,11 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250f42bafb878974da85352977fb8110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  element:
-    type: 0
-    color: {r: 0, g: 0, b: 0, a: 0}
-    description: 
-    icon: {fileID: 0}
   bowUpgradeIcons:
   - {fileID: 1080507436945267380, guid: debe447e81f0bcc44b181aa026a90176, type: 3}
   - {fileID: 5651368570880698611, guid: 0864b6a23c7ec77408300449d15acb2f, type: 3}

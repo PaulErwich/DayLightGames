@@ -1418,6 +1418,7 @@ GameObject:
   - component: {fileID: 5582048690522938433}
   - component: {fileID: 8951982595998631509}
   - component: {fileID: 5338769977342241445}
+  - component: {fileID: 2079612275127151621}
   m_Layer: 0
   m_Name: Upgrades
   m_TagString: Untagged
@@ -1529,6 +1530,19 @@ MonoBehaviour:
   m_Spacing: {x: 50, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &2079612275127151621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4017434161271440561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f81af90069261340a3340cf6ced92f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponUpgradeUI: {fileID: 4392034344659448670, guid: 1198f6c05aabd2b46b19e663d34b29cb, type: 3}
 --- !u!1 &4344022418407959364
 GameObject:
   m_ObjectHideFlags: 0
