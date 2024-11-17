@@ -17,37 +17,7 @@ public class SetupShopElement : MonoBehaviour
     private Color unavailable = new Color(255, 0, 0, 200);
     Image[] images;
 
-    Dictionary <statUpgradeType, Dictionary<shopUpgradeTier, int>> upgradeDictionary = new Dictionary<statUpgradeType, Dictionary<shopUpgradeTier, int>>()
-    {
-        { statUpgradeType.MaxHealth, new Dictionary<shopUpgradeTier, int>()
-            {
-                {shopUpgradeTier.Common, 5 },
-                {shopUpgradeTier.Uncommon, 10 },
-                { shopUpgradeTier.Rare, 15},
-            }
-        },
-        { statUpgradeType.AttackSpeed, new Dictionary<shopUpgradeTier, int>()
-            {
-                {shopUpgradeTier.Common, 1 },
-                {shopUpgradeTier.Uncommon, 2 },
-                { shopUpgradeTier.Rare, 3},
-            }
-        },
-        { statUpgradeType.Speed, new Dictionary<shopUpgradeTier, int>()
-            {
-                {shopUpgradeTier.Common, 1 },
-                {shopUpgradeTier.Uncommon, 2 },
-                { shopUpgradeTier.Rare, 3},
-            }
-        },
-        { statUpgradeType.Armour, new Dictionary<shopUpgradeTier, int>()
-            {
-                {shopUpgradeTier.Common, 1 },
-                {shopUpgradeTier.Uncommon, 2 },
-                { shopUpgradeTier.Rare, 2},
-            }
-        },
-        };
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -104,7 +74,7 @@ public class SetupShopElement : MonoBehaviour
         {
             button.interactable = false;
             images[0].color = unavailable;
-            Player.instance.StatUpgrade(element.type, upgradeDictionary[element.type][element.tier]);
+            Player.instance.StatUpgrade(element.type, UpgradeDictionaries.upgradeDictionary[element.type][element.tier]);
         }
     }
 }
