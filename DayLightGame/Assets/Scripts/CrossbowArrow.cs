@@ -23,7 +23,7 @@ public class CrossbowArrow : ArrowScript
         }
 
         GetComponent<Rigidbody2D>().linearVelocity = transform.TransformDirection(new Vector2(10, 0));
-        type = EvolveType.Crossbow;
+        type = EvolveTypeBow.Crossbow;
     }
 
     public override void OnCollisionEnter2D(Collision2D collision)

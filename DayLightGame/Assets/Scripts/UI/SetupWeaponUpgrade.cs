@@ -25,7 +25,7 @@ public class SetupWeaponUpgrade : MonoBehaviour
         images = GetComponentsInChildren<Image>();
 
         // 1 is to ignore Default
-        EvolveType type = (EvolveType)UnityEngine.Random.Range(1, System.Enum.GetValues(typeof(EvolveType)).Length);
+        EvolveTypeBow type = (EvolveTypeBow)UnityEngine.Random.Range(1, System.Enum.GetValues(typeof(EvolveTypeBow)).Length);
         element = UpgradeDictionaries.bowUpgradeDictionary[type];
 
         element.icon = bowUpgradeIcons[((int)element.type) - 1];
@@ -45,14 +45,14 @@ public class SetupWeaponUpgrade : MonoBehaviour
 [Serializable]
 public struct upgradeElement
 {
-    public upgradeElement(EvolveType _type, Color _color, string _desc)
+    public upgradeElement(EvolveTypeBow _type, Color _color, string _desc)
     {
         type = _type;
         color = _color;
         description = _desc;
         icon = null;
     }
-    public EvolveType type;
+    public EvolveTypeBow type;
     public Color color;
     public string description;
     public Sprite icon;

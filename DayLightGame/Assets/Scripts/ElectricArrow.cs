@@ -10,7 +10,7 @@ public class ElectricArrow : ArrowScript
     protected override void Awake()
     {
         GetComponent<Rigidbody2D>().linearVelocity = transform.TransformDirection(new Vector2(10, 0));
-        type = EvolveType.Electric;
+        type = EvolveTypeBow.Electric;
         slowAmount = 1;
         //damage = Electric Arrow Damage here
 
