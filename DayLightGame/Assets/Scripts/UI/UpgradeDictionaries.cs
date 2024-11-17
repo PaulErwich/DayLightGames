@@ -8,12 +8,12 @@ public class UpgradeDictionaries
     // Bow upgrade dictionary
     public static Dictionary<EvolveType, upgradeElement> bowUpgradeDictionary = new Dictionary<EvolveType, upgradeElement>()
     {
-        { EvolveType.Ice, new upgradeElement(EvolveType.Ice, new Color(0, 0, 255), "Ice weapon upgrade") },
-        { EvolveType.Fire, new upgradeElement(EvolveType.Fire, new Color(255, 0, 0), "Fire weapon upgrade") },
-        { EvolveType.Electric, new upgradeElement(EvolveType.Electric, new Color(255, 0, 0), "Electric weapon upgrade") },
-        { EvolveType.Explosive, new upgradeElement(EvolveType.Explosive, new Color(255, 0, 0), "Explosive weapon upgrade") },
-        { EvolveType.Multishot, new upgradeElement(EvolveType.Multishot, new Color(255, 0, 0), "Multishot weapon upgrade") },
-        { EvolveType.Crossbow, new upgradeElement(EvolveType.Crossbow, new Color(255, 0, 0), "Crossbow weapon upgrade") },
+        { EvolveType.Ice, new upgradeElement(EvolveType.Ice, new Color(0, 227, 227), "Ice weapon upgrade") },   // Ice Blue
+        { EvolveType.Fire, new upgradeElement(EvolveType.Fire, new Color(206, 32, 41), "Fire weapon upgrade") },  // Red
+        { EvolveType.Electric, new upgradeElement(EvolveType.Electric, new Color(205, 205, 0), "Electric weapon upgrade") },    // Yellow
+        { EvolveType.Explosive, new upgradeElement(EvolveType.Explosive, new Color(0, 255, 0), "Explosive weapon upgrade") },   // Green
+        { EvolveType.Multishot, new upgradeElement(EvolveType.Multishot, new Color(110, 110, 110), "Multishot weapon upgrade") },   // Grey
+        { EvolveType.Crossbow, new upgradeElement(EvolveType.Crossbow, new Color(0, 0, 0), "Crossbow weapon upgrade") },    // Black
     };
 
     public static Dictionary<statUpgradeType, Dictionary<shopUpgradeTier, int>> upgradeDictionary = new Dictionary<statUpgradeType, Dictionary<shopUpgradeTier, int>>()
