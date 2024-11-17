@@ -92,7 +92,8 @@ public class Enemy : Character
         }
         else if (collision.gameObject.tag == "playerMelee")
         {
-
+            MeleeBase weapon = collision.gameObject.GetComponent<MeleeBase>();
+            TakeDamage(weapon.damage);
         }
         else if (collision.gameObject.tag == "playerFire")
         {
