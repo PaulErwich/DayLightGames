@@ -12,7 +12,7 @@ public class MultishotArrow : ArrowScript
     protected override void Awake()
     {
         GetComponent<Rigidbody2D>().linearVelocity = transform.TransformDirection(new Vector2(10, 0));
-        type = EvolveType.Multishot;
+        type = EvolveTypeBow.Multishot;
         //damage = Multishot Arrow Damage here
     }
 

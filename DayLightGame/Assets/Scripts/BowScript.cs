@@ -9,7 +9,7 @@ public class BowScript : MonoBehaviour
     public Transform player;
     public Transform bow;
     public GameObject[] arrow;
-    EvolveType evolve;
+    EvolveTypeBow evolve;
 
     [Header("Variables")]
     private float cooldown;
@@ -18,7 +18,7 @@ public class BowScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        evolve = EvolveType.Default;
+        evolve = EvolveTypeBow.Default;
         player = transform.parent.transform;
     }
 
@@ -38,7 +38,7 @@ public class BowScript : MonoBehaviour
         cooldown += Time.deltaTime;
     }
 }
-public enum EvolveType
+public enum EvolveTypeBow
 {
     Default = 0,
     Ice = 1,

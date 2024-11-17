@@ -17,7 +17,7 @@ public class ArrowScript : MonoBehaviour
     public int slowAmount = 0;
 
     [Header("Other")]
-    public EvolveType type = EvolveType.Default;
+    public EvolveTypeBow type = EvolveTypeBow.Default;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Awake()

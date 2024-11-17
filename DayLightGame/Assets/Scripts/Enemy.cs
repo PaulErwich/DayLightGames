@@ -79,13 +79,13 @@ public class Enemy : Character
             TakeDamage(arrow.damage);
             switch (arrow.type)
             {
-                case EvolveType.Fire:
+                case EvolveTypeBow.Fire:
                     StartCoroutine(Burn(arrow.duration, arrow.damage));
                     break;
-                case EvolveType.Ice:
+                case EvolveTypeBow.Ice:
                     Slow(arrow.duration, GetSpeed());
                     break;
-                case EvolveType.Electric:
+                case EvolveTypeBow.Electric:
                     Slow(arrow.duration, arrow.slowAmount);
                     break;
             }
