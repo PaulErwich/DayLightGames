@@ -1,11 +1,8 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeleeBase : MonoBehaviour
 {
-    [Header("Transform")]
-    public Transform player;
-    public Transform bow;
-    public GameObject[] arrow;
     EvolveTypeSword evolve;
 
     [Header("Upgrades")]

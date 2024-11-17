@@ -9,6 +9,7 @@ public class Player : Character
     public static Player instance;
 
     private BowScript bow;
+    private Sword sword;
 
     [SerializeField] private Transform pivotPoint;
 
@@ -33,6 +34,7 @@ public class Player : Character
     private void Start()
     {
         bow = GetComponentInChildren<BowScript>();
+        sword = GetComponentInChildren<Sword>();
     }
 
     // Stat upgrades using the shop and level up menus
@@ -115,7 +117,7 @@ public class Player : Character
 
     private void OnMeleeAttack(InputValue value)
     {
-        
+        sword.Swing();
     }
 
     private void OnRangedAttack(InputValue value)
