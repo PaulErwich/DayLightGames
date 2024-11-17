@@ -13,7 +13,8 @@ public class ArrowScript : MonoBehaviour
 
     [Header("Stats")]
     public float duration = 3;
-    public float damage = 2;
+    public int damage = 2;
+    public int slowAmount = 0;
 
     [Header("Other")]
     public EvolveType type = EvolveType.Default;

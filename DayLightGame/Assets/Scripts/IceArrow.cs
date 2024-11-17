@@ -11,7 +11,7 @@ public class NewMonoBehaviourScript : ArrowScript
     protected override void Awake()
     {
         GetComponent<Rigidbody2D>().linearVelocity = transform.TransformDirection(new Vector2(10, 0));
-
+        type = EvolveType.Ice;
         //damage = Ice Arrow Damage here
 
         if (enhance)

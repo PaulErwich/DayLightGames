@@ -8,6 +8,8 @@ public class Player : Character
 {
     public static Player instance;
 
+    private BowScript bow;
+
     [SerializeField] private Transform pivotPoint;
 
     private Vector2 move;
@@ -25,6 +27,12 @@ public class Player : Character
             Destroy(gameObject);
         }
         base.Awake();
+        baseSpeed = speed;
+    }
+
+    private void Start()
+    {
+        bow = GetComponentInChildren<BowScript>();
     }
 
     // Stat upgrades using the shop and level up menus
@@ -37,10 +45,11 @@ public class Player : Character
                 hitPoints += amount;
                 break;
             case statUpgradeType.AttackSpeed:
-                // On weapon
+                bow.bowAtkSpeed += amount;
                 break;
             case statUpgradeType.Speed:
                 speed += amount;
+                baseSpeed = speed;
                 break;
             case statUpgradeType.Armour:
                 armour += amount;
@@ -106,12 +115,12 @@ public class Player : Character
 
     private void OnMeleeAttack(InputValue value)
     {
-        Debug.Log("Left");
+        
     }
 
     private void OnRangedAttack(InputValue value)
     {
-        Debug.Log("Right");
+        bow.Shoot();
     }
 
     private void FixedUpdate()
@@ -133,14 +142,13 @@ public class Player : Character
         }
     }
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        base.OnCollisionEnter2D(collision);
-        /*
         if (collision.gameObject.tag == "enemyArrow")
         {
             TakeDamage(collision.gameObject.GetComponent<ArrowScript>().damage);
         }
+        /*
         else if (collision.gameObject.tag == "enemyMelee")
         {
             TakeDamage(collision.gameObject.GetComponent<Sword>().damage);

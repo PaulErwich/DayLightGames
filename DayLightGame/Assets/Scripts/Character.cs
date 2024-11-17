@@ -8,30 +8,29 @@ public class Character : MonoBehaviour
     [Header("Attributes")]
     public int hitPointsMaximum;
     public int hitPoints;
+    public int baseSpeed = 10;
     public int speed;
     public int armour;
     protected Rigidbody2D rb;
     private CircleCollider2D cc;
 
+    private int coroutineCount = 0;
+
     // Apply a rigidbody and circle collider to the character
     protected virtual void Awake()
     {
-       rb = gameObject.AddComponent<Rigidbody2D>();
+        rb = gameObject.AddComponent<Rigidbody2D>();
         rb.gravityScale = 0;
-        //rb.bodyType = RigidbodyType2D.Static;
         rb.mass = 1000000;
         rb.inertia = 1000000;
         cc = gameObject.AddComponent<CircleCollider2D>();
     }
+
     protected virtual void LateUpdate()
     {
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0.0f;
         rb.rotation = 0.0f;
-    }
-
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
-    {
     }
 
     // Deal damage to the character - armour
@@ -54,31 +53,45 @@ public class Character : MonoBehaviour
     }
 
     // Deal buring damage over so many ticks
-    public IEnumerator Burn(int amount, int ticks)
+    public IEnumerator Burn(float duration, int amount)
     {
-        for (int i = 0; i < ticks ; i++)
+        for (int i = 0; i < duration ; i++)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
             TakeDamage(amount);
         }
     }
 
     // Slow the character
-    public IEnumerator Slow(float duration, int slowedSpeed)
+    public virtual void Slow(float duration, int slowedSpeed)
     {
-        int baseSpeed = speed;
-        yield return StartCoroutine(newSpeed(duration, slowedSpeed));
-        yield return resetSpeed(baseSpeed);
+        coroutineCount++;
+        SetSpeed(baseSpeed - slowedSpeed);
+        StartCoroutine(resetSpeed(duration));
     }
 
-    private IEnumerator newSpeed(float duration, int slowedSpeed)
+    private IEnumerator resetSpeed(float duration)
     {
-        speed -= slowedSpeed;
         yield return new WaitForSeconds(duration);
+        coroutineCount--;
+        CheckCoroutine();
     }
 
-    private IEnumerator resetSpeed(int baseSpeed)
+    private void CheckCoroutine()
     {
-        yield return speed = baseSpeed;
+        if (coroutineCount <= 0)
+        {
+            SetSpeed(baseSpeed);
+        }
+    }
+
+    public virtual int GetSpeed()
+    {
+        return speed;
+    }
+
+    public virtual void SetSpeed(int newSpeed)
+    {
+        speed = newSpeed;
     }
 }

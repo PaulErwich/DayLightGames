@@ -20,6 +20,7 @@ public class Enemy : Character
         hitPointsMaximum = _hitPoints;
         hitPoints = _hitPoints;
         speed = _speed;
+        baseSpeed = _speed;
         armour = _armour;
         goldWorth = _goldWorth;
     }
@@ -70,18 +71,22 @@ public class Enemy : Character
         }
     }
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        //base.OnCollisionEnter2D(collision);
-        /*
         if (collision.gameObject.tag == "playerArrow")
         {
             ArrowScript arrow = collision.gameObject.GetComponent<ArrowScript>();
             TakeDamage(arrow.damage);
-            switch (arrow.evolve)
+            switch (arrow.type)
             {
-                case "Burn":
-                    Burn(collision.evolve.ticks, collision.evolve.damage);
+                case EvolveType.Fire:
+                    StartCoroutine(Burn(arrow.duration, arrow.damage));
+                    break;
+                case EvolveType.Ice:
+                    Slow(arrow.duration, GetSpeed());
+                    break;
+                case EvolveType.Electric:
+                    Slow(arrow.duration, arrow.slowAmount);
                     break;
             }
         }
@@ -93,11 +98,20 @@ public class Enemy : Character
         {
 
         }
-        */
     }
 
     private void OnDestroy()
     {
         RoomManager.instance.enemiesDestroyed++;
+    }
+
+    public override int GetSpeed()
+    {
+        return (int)agent.speed;
+    }
+
+    public override void SetSpeed(int newSpeed)
+    {
+        agent.speed = newSpeed;
     }
 }
