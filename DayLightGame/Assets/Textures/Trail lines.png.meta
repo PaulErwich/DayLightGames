@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 26f6a68aa8b2b13488671f0753f171ac
+guid: 6f61fd69d145e454082fffed4b33f775
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8817621052714094420
-    second: Explosive icon_0
+      213: -2160749716159934249
+    second: Trail lines_0
+  - first:
+      213: -9012117675045265416
+    second: Trail lines_1
+  - first:
+      213: -5436236480086785239
+    second: Trail lines_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Explosive icon_0
+      name: Trail lines_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 7
-        width: 102
-        height: 113
+        x: 34
+        y: 16
+        width: 9
+        height: 71
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 45f870331ab7e5a70800000000000000
-      internalID: 8817621052714094420
+      spriteID: 7d0d2cfc4997302e0800000000000000
+      internalID: -2160749716159934249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trail lines_1
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 26
+        width: 8
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ff58e809b68ee280800000000000000
+      internalID: -9012117675045265416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trail lines_2
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 25
+        width: 7
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 923486949bb9e84b0800000000000000
+      internalID: -5436236480086785239
       vertices: []
       indices: 
       edges: []
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Explosive icon_0: 8817621052714094420
+      Trail lines_0: -2160749716159934249
+      Trail lines_1: -9012117675045265416
+      Trail lines_2: -5436236480086785239
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
