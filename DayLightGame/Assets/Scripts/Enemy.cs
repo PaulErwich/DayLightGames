@@ -90,9 +90,9 @@ public class Enemy : Character
                     break;
             }
         }
-        else if (collision.gameObject.tag == "playerMelee")
+        else if (collision.collider.gameObject.tag == "playerMelee")
         {
-            MeleeBase weapon = collision.gameObject.GetComponent<MeleeBase>();
+            MeleeBase weapon = collision.collider.gameObject.GetComponent<MeleeBase>();
             TakeDamage(weapon.damage);
         }
         else if (collision.gameObject.tag == "playerFire")

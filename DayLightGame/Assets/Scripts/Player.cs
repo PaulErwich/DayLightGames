@@ -9,7 +9,7 @@ public class Player : Character
     public static Player instance;
 
     private BowScript bow;
-    private Sword sword;
+    private MeleeBase mb;
 
     [SerializeField] private Transform pivotPoint;
 
@@ -34,7 +34,7 @@ public class Player : Character
     private void Start()
     {
         bow = GetComponentInChildren<BowScript>();
-        sword = GetComponentInChildren<Sword>();
+        mb = GetComponentInChildren<MeleeBase>();
     }
 
     // Stat upgrades using the shop and level up menus
@@ -117,7 +117,7 @@ public class Player : Character
 
     private void OnMeleeAttack(InputValue value)
     {
-        sword.Swing();
+        mb.Swing();
     }
 
     private void OnRangedAttack(InputValue value)
@@ -150,11 +150,9 @@ public class Player : Character
         {
             TakeDamage(collision.gameObject.GetComponent<ArrowScript>().damage);
         }
-        /*
-        else if (collision.gameObject.tag == "enemyMelee")
+        else if (collision.collider.gameObject.tag == "enemyMelee")
         {
-            TakeDamage(collision.gameObject.GetComponent<Sword>().damage);
+            TakeDamage(collision.collider.gameObject.GetComponent<MeleeBase>().damage);
         }
-        */
     }
 }

@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class MeleeBase : MonoBehaviour
 {
+    private Animator animator;
     EvolveTypeSword evolve;
+    public EvolveTypeSword type = EvolveTypeSword.Default;
+    public BoxCollider2D bc;
 
     [Header("Upgrades")]
     public bool meleeSpecial1;
@@ -17,7 +20,16 @@ public class MeleeBase : MonoBehaviour
     public float duration = 3;
     public int slowAmount = 0;
 
-    public EvolveTypeSword type = EvolveTypeSword.Default;
+    protected virtual void Awake()
+    {
+        animator = GetComponentInParent<Animator>();
+        bc = gameObject.AddComponent<BoxCollider2D>();
+    }
+
+    public void Swing()
+    {
+        animator.SetTrigger("SwordSwing");
+    }
 }
 public enum EvolveTypeSword
 {
