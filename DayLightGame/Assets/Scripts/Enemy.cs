@@ -70,8 +70,9 @@ public class Enemy : Character
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
+        //base.OnCollisionEnter2D(collision);
         /*
         if (collision.gameObject.tag == "playerArrow")
         {

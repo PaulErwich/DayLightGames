@@ -21,6 +21,7 @@ public class BowScript : MonoBehaviour
     {
         chargedTime = 0;
         evolve = EvolveType.Default;
+        player = transform.parent.transform;
     }
 
     private void Awake()
@@ -46,6 +47,7 @@ public class BowScript : MonoBehaviour
 
             //Instantiate and shoot arrow
             GameObject instantiatedArrow = Instantiate(arrow[(int)evolve], bow.position, player.rotation);
+            instantiatedArrow.SetActive(true);
         }
 
         //If the bow has not been charged doesnt shoot

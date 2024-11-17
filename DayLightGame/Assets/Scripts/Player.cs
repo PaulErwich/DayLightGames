@@ -121,7 +121,7 @@ public class Player : Character
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z += 90;
-        transform.LookAt(mousePos, new Vector3(0, 0, -1));
+        pivotPoint.LookAt(mousePos, new Vector3(0, 0, -1));
     }
 
     public override void TakeDamage(int amount)
@@ -133,8 +133,9 @@ public class Player : Character
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
+        base.OnCollisionEnter2D(collision);
         /*
         if (collision.gameObject.tag == "enemyArrow")
         {
