@@ -57,15 +57,14 @@ public class BowScript : MonoBehaviour
             chargedTime = 0;
         }
     }
-
-    enum EvolveType
-    {
-        Default = 0,
-        Ice = 1,
-        Fire = 2,
-        Electric = 3,
-        Explosive = 4,
-        Multishot = 5,
-        Crossbow = 6
-    }
+}
+public enum EvolveType
+{
+    Default = 0,
+    Ice = 1,
+    Fire = 2,
+    Electric = 3,
+    Explosive = 4,
+    Multishot = 5,
+    Crossbow = 6
 }

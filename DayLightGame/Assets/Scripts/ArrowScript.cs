@@ -13,7 +13,10 @@ public class ArrowScript : MonoBehaviour
 
     [Header("Stats")]
     public float duration = 3;
-    public float damage;
+    public float damage = 2;
+
+    [Header("Other")]
+    public EvolveType type = EvolveType.Default;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected virtual void Awake()

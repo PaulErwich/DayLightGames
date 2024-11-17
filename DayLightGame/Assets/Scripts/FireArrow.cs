@@ -10,7 +10,7 @@ public class FireArrow : ArrowScript
     protected override void Awake()
     {
         GetComponent<Rigidbody2D>().linearVelocity = transform.TransformDirection(new Vector2(10, 0));
-
+        type = EvolveType.Fire;
         //damage = Fire Arrow Damage here
 
         if (enhance)
