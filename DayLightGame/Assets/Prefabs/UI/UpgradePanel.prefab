@@ -163,13 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250f42bafb878974da85352977fb8110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bowUpgradeIcons:
-  - {fileID: 1080507436945267380, guid: debe447e81f0bcc44b181aa026a90176, type: 3}
-  - {fileID: 5651368570880698611, guid: 0864b6a23c7ec77408300449d15acb2f, type: 3}
-  - {fileID: -2492973495774293337, guid: 7b983f0ade4b97a4292a3765d102ca0f, type: 3}
-  - {fileID: 3216212878870623546, guid: 3e0dd7acb5cdb024181590cb0e380c2c, type: 3}
-  - {fileID: 2676141476722916649, guid: 02d5a177383691446a1d846fbef7a35a, type: 3}
-  - {fileID: 9141314108379988232, guid: a5d81f551c34186498cdcd8ebabe948c, type: 3}
 --- !u!1 &5304262486134844530
 GameObject:
   m_ObjectHideFlags: 0

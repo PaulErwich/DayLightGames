@@ -37,6 +37,11 @@ public class BowScript : MonoBehaviour
     {
         cooldown += Time.deltaTime;
     }
+
+    public EvolveTypeBow GetEvolveType()
+    {
+        return evolve;
+    }
 }
 public enum EvolveTypeBow
 {

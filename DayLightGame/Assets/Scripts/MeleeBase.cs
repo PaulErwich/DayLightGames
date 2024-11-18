@@ -33,6 +33,11 @@ public class MeleeBase : MonoBehaviour
     {
         animator.SetTrigger(swingType);
     }
+
+    public EvolveTypeSword GetEvolveType()
+    {
+        return evolve;
+    }
 }
 public enum EvolveTypeSword
 {

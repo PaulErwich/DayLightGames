@@ -10,7 +10,7 @@ public class UpgradeShopManager : MonoBehaviour
         for (int i = 0; i < upgradeNumber; i++)
         {
             GameObject newUI = Instantiate(weaponUpgradeUI, this.transform);
-            newUI.GetComponent<SetupWeaponUpgrade>().SetupUpgradeIcon(weaponType.ranged, upgradeType.evolve);
+            newUI.GetComponent<SetupWeaponUpgrade>().SetupUpgradeIcon(weaponType.melee, upgradeType.addon);
         }
     }
 

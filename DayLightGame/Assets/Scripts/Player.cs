@@ -155,4 +155,14 @@ public class Player : Character
             TakeDamage(collision.collider.gameObject.GetComponent<MeleeBase>().damage);
         }
     }
+
+    public EvolveTypeBow GetBowEvolve()
+    {
+        return bow.GetEvolveType();
+    }
+
+    public EvolveTypeSword GetSwordEvolve()
+    {
+        return mb.GetEvolveType();
+    }
 }
