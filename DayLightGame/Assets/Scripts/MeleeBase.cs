@@ -32,6 +32,31 @@ public class MeleeBase : MonoBehaviour
     {
         animator.SetTrigger(swingType);
     }
+
+    public virtual void Enhance()
+    {
+
+    }
+
+    public virtual void Damage()
+    {
+
+    }
+
+    public virtual void AttackSpeed()
+    {
+
+    }
+
+    public virtual void MeleeSpecial1()
+    {
+
+    }
+
+    public virtual void MeleeSpecial2()
+    {
+
+    }
 }
 public enum EvolveTypeSword
 {
