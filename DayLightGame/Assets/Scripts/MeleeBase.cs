@@ -26,10 +26,9 @@ public class MeleeBase : MonoBehaviour
     {
         animator = GetComponentInParent<Animator>();
         bc = GetComponent<BoxCollider2D>();
-        bc.enabled = false;
     }
 
-    public void Swing()
+    public void Hit()
     {
         animator.SetTrigger(swingType);
     }
@@ -37,6 +36,31 @@ public class MeleeBase : MonoBehaviour
     public EvolveTypeSword GetEvolveType()
     {
         return evolve;
+    }
+
+    public virtual void Enhance()
+    {
+
+    }
+
+    public virtual void Damage()
+    {
+
+    }
+
+    public virtual void AttackSpeed()
+    {
+
+    }
+
+    public virtual void MeleeSpecial1()
+    {
+
+    }
+
+    public virtual void MeleeSpecial2()
+    {
+
     }
 }
 public enum EvolveTypeSword

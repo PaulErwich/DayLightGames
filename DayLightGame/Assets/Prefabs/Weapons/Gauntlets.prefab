@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3661495433457166363}
   - component: {fileID: 8441890239954658496}
   - component: {fileID: -2500032069899838068}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gauntlets
   m_TagString: playerMelee
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
   attackSpeed: 1
   duration: 3
   slowAmount: 0
-  swingType: gauntelt
+  swingType: gauntlets
 --- !u!61 &-2500032069899838068
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7016938534889592996}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}

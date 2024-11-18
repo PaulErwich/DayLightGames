@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -12,7 +13,10 @@ public class Enemy : Character
 
     [SerializeField] private Transform pivotPoint;
 
-    NavMeshAgent agent;    
+    NavMeshAgent agent;
+    Animator am;
+
+    bool inAnimation;
 
     // Set stats for the created enemy
     public void SetUpEnemy(int _hitPoints = 10, int _speed = 4, int _armour = 1, int _goldWorth = 1)
@@ -45,14 +49,13 @@ public class Enemy : Character
         agent.acceleration = 50;
         agent.speed = speed;
         agent.angularSpeed = speed;
+
+        am = GetComponentInChildren<Animator>();
     }
 
     private void FixedUpdate()
     {
         GetTargetPosition();
-
-        // Only rotates the z axis
-        
     }
 
     // Set the target of the NavMesh
@@ -68,6 +71,13 @@ public class Enemy : Character
         {
             Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, velocity);
             pivotPoint.rotation = Quaternion.RotateTowards(pivotPoint.rotation, targetRotation, 3);
+        }
+
+        if (Vector2.Distance(pivotPoint.position, playerPos) <= 3f * transform.localScale.x && inAnimation == false)
+        {
+            inAnimation = true;
+            am.SetTrigger("slash");
+            StartCoroutine(AttackCooldown());
         }
     }
 
@@ -94,6 +104,10 @@ public class Enemy : Character
         {
             MeleeBase weapon = collision.collider.gameObject.GetComponent<MeleeBase>();
             TakeDamage(weapon.damage);
+            switch (weapon.type)
+            {
+
+            }
         }
         else if (collision.gameObject.tag == "playerFire")
         {
@@ -114,5 +128,11 @@ public class Enemy : Character
     public override void SetSpeed(int newSpeed)
     {
         agent.speed = newSpeed;
+    }
+
+    private IEnumerator AttackCooldown()
+    {
+        yield return new WaitForSeconds(1f);
+        inAnimation = false;
     }
 }

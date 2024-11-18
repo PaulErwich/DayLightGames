@@ -1,3 +1,4 @@
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.GraphicsBuffer;
@@ -29,6 +30,7 @@ public class Player : Character
         }
         base.Awake();
         baseSpeed = speed;
+        cc.excludeLayers = LayerMask.GetMask("Weapons");
     }
 
     private void Start()
@@ -117,7 +119,7 @@ public class Player : Character
 
     private void OnMeleeAttack(InputValue value)
     {
-        mb.Swing();
+        mb.Hit();
     }
 
     private void OnRangedAttack(InputValue value)
@@ -140,7 +142,7 @@ public class Player : Character
         base.TakeDamage(amount);
         if (IsDead())
         {
-            // Death Logic
+            //gameObject.SetActive(false);
         }
     }
 
