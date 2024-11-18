@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2823000257978384498}
   - component: {fileID: 3661495433457166363}
   - component: {fileID: 8441890239954658496}
-  - component: {fileID: -2500032069899838068}
-  m_Layer: 6
-  m_Name: Gauntlets
+  - component: {fileID: 6071710881826135733}
+  m_Layer: 0
+  m_Name: ShieldBig
   m_TagString: playerMelee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7016938534889592996}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.37, y: 0.135, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: -1321357963
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: -6773132740986916346, guid: dd65dad7275218d478ec0953d7036e53, type: 3}
+  m_Sprite: {fileID: 1548745276983890696, guid: 32108110a815a9a4ebac36bd2ad34a15, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0744e585656846a4290cb84b78d12203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  type: 2
   meleeSpecial1: 0
   meleeSpecial2: 0
   enhance: 0
@@ -110,15 +110,15 @@ MonoBehaviour:
   attackSpeed: 1
   duration: 3
   slowAmount: 0
-  swingType: gauntlets
---- !u!61 &-2500032069899838068
+  swingType: shield
+--- !u!61 &6071710881826135733
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7016938534889592996}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -149,11 +149,11 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6, y: 0.65}
+    oldSize: {x: 1.86, y: 0.68}
     newSize: {x: 0.46, y: 1.14}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6, y: 0.65}
+  m_Size: {x: 1.08, y: 0.42}
   m_EdgeRadius: 0

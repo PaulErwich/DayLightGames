@@ -104,6 +104,10 @@ public class Enemy : Character
         {
             MeleeBase weapon = collision.collider.gameObject.GetComponent<MeleeBase>();
             TakeDamage(weapon.damage);
+            switch (weapon.type)
+            {
+
+            }
         }
         else if (collision.gameObject.tag == "playerFire")
         {
