@@ -26,7 +26,6 @@ public class MeleeBase : MonoBehaviour
     {
         animator = GetComponentInParent<Animator>();
         bc = GetComponent<BoxCollider2D>();
-        bc.enabled = false;
     }
 
     public void Swing()
