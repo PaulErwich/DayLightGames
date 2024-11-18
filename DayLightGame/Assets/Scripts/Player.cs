@@ -1,3 +1,4 @@
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.GraphicsBuffer;
@@ -29,6 +30,7 @@ public class Player : Character
         }
         base.Awake();
         baseSpeed = speed;
+        cc.excludeLayers = LayerMask.GetMask("Weapons");
     }
 
     private void Start()
