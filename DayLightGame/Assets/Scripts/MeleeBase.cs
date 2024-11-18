@@ -28,7 +28,7 @@ public class MeleeBase : MonoBehaviour
         bc = GetComponent<BoxCollider2D>();
     }
 
-    public void Swing()
+    public void Hit()
     {
         animator.SetTrigger(swingType);
     }

@@ -117,7 +117,7 @@ public class Player : Character
 
     private void OnMeleeAttack(InputValue value)
     {
-        mb.Swing();
+        mb.Hit();
     }
 
     private void OnRangedAttack(InputValue value)
@@ -140,7 +140,7 @@ public class Player : Character
         base.TakeDamage(amount);
         if (IsDead())
         {
-            // Death Logic
+            //gameObject.SetActive(false);
         }
     }
 
