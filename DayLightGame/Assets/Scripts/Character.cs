@@ -12,7 +12,7 @@ public class Character : MonoBehaviour
     public int speed;
     public int armour;
     protected Rigidbody2D rb;
-    private CircleCollider2D cc;
+    protected CircleCollider2D cc;
 
     private int coroutineCount = 0;
 
