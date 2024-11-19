@@ -20,10 +20,15 @@ public class SetupShopElement : MonoBehaviour
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         button = GetComponent<Button>();
+        images = GetComponentsInChildren<Image>();
+        SetupElement();
+    }
 
+    public void SetupElement()
+    {
         switch (UnityEngine.Random.Range(0, 100))
         {
             case <= ((int)shopUpgradeTier.Common):
@@ -39,13 +44,11 @@ public class SetupShopElement : MonoBehaviour
 
         //element.type = (shopUpgradeType)UnityEngine.Random.Range(0, System.Enum.GetValues(typeof(shopUpgradeType)).Length);
         element.goldCost = UnityEngine.Random.Range(5, 10);
-        
+
         TextMeshProUGUI[] textBoxes = GetComponentsInChildren<TextMeshProUGUI>();
 
         textBoxes[0].text = element.tier.ToString() + ": " + element.type.ToString();
         textBoxes[1].text = "Cost: " + element.goldCost.ToString() + " Gold";
-
-       images  = GetComponentsInChildren<Image>();
 
         if (Player.instance.GetGold() >= element.goldCost)
         {
@@ -58,14 +61,7 @@ public class SetupShopElement : MonoBehaviour
             button.interactable = false;
         }
 
-
         images[1].sprite = icon;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void UpgradePlayer()

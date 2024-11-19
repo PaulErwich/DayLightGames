@@ -13,7 +13,7 @@ public class ArrowScript : MonoBehaviour
 
     [Header("Stats")]
     public float duration = 3;
-    public int damage = 2;
+    public int damage = 11;
     public int slowAmount = 0;
 
     [Header("Other")]

@@ -13,7 +13,7 @@ public class SetupWeaponUpgrade : MonoBehaviour
     private TextMeshProUGUI[] textBoxes;
     private Image[] images;
 
-    static List<int> currentUpgradeOptions = new List<int>();
+    public static List<int> currentUpgradeOptions = new List<int>();
 
     int GenerateUpgradeType(int min, int max)
     {
@@ -93,6 +93,8 @@ public class SetupWeaponUpgrade : MonoBehaviour
 
         textBoxes[0].text = element.title + " upgrade";
         textBoxes[1].text = element.description;
+
+        button.onClick.AddListener(RoomManager.instance.RoomEnd);
     }
 }
 

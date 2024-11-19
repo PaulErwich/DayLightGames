@@ -60,17 +60,37 @@ public class RoomManager : MonoBehaviour
         if (enemiesDestroyed >= enemiesThisRoom)
         {
             RoomEnd();
+            enemiesDestroyed = 0;
         }
     }
 
     // If the room needs a shop or elite rewards
     public void RoomEnd()
     {
+        if (Player.instance.meleeKillCount >= Player.instance.requiredKillsMelee)
+        {
+            upgradeUI.SetActive(true);
+            upgradeUI.GetComponentInChildren<UpgradeShopManager>().SetupUpgradeShop(weaponType.melee, upgradeType.evolve);
+            Player.instance.meleeKillCount -= Player.instance.requiredKillsMelee;
+            Player.instance.requiredKillsMelee *= 2;
+            return;
+        }
+        else if (Player.instance.rangedKillCount >= Player.instance.requiredKillsRanged)
+        {
+            upgradeUI.SetActive(true);
+            upgradeUI.GetComponentInChildren<UpgradeShopManager>().SetupUpgradeShop(weaponType.ranged, upgradeType.evolve);
+            Player.instance.rangedKillCount -= Player.instance.requiredKillsRanged;
+            Player.instance.requiredKillsRanged *= 2;
+            return;
+        }
+        upgradeUI.SetActive(false);
+
         switch (currentRoom)
         {
             default:
                 // Standard Wave
                 // No Shop
+                NextRoom();
                 break;
             case 3: case 6: case 9: case 12: case 15:
                 // Standard Wave
@@ -79,6 +99,7 @@ public class RoomManager : MonoBehaviour
                 shopUI.GetComponentInChildren<RestoreHealthUI>().UpdateUI();
                 break;
             case 5: case 11:
+                NextRoom();
                 // Elite Wave
                 break;
             case 16:
@@ -86,6 +107,16 @@ public class RoomManager : MonoBehaviour
                 break;
         }
         currentRoom++;
-        enemiesDestroyed = 0;
+    }
+
+    public bool IsShopRoom()
+    {
+        switch (currentRoom)
+        {
+            default:
+                return false;
+            case 3: case 6: case 9: case 12: case 15:
+                return true;
+        }
     }
 }

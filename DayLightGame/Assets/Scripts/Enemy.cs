@@ -18,6 +18,7 @@ public class Enemy : Character
 
     private float cooldown;
     private float attackSpeed = 0.5f;
+    private string lastHitTag;
 
     // Set stats for the created enemy
     public void SetUpEnemy(int _hitPoints = 10, int _speed = 4, int _armour = 1, int _goldWorth = 1)
@@ -38,6 +39,10 @@ public class Enemy : Character
         {
             Destroy(gameObject);
             Player.instance.GiveGold(goldWorth);
+            if (lastHitTag == "playerArrow")
+                Player.instance.IncreaseKillCount(weaponType.ranged);
+            else if (lastHitTag == "playerMelee")
+                Player.instance.IncreaseKillCount(weaponType.melee);
         }
     }
 
@@ -86,6 +91,7 @@ public class Enemy : Character
     {
         if (collision.gameObject.tag == "playerArrow")
         {
+            lastHitTag = collision.gameObject.tag;
             ArrowScript arrow = collision.gameObject.GetComponent<ArrowScript>();
             TakeDamage(arrow.damage);
             switch (arrow.type)
@@ -103,6 +109,7 @@ public class Enemy : Character
         }
         else if (collision.collider.gameObject.tag == "playerMelee")
         {
+            lastHitTag = collision.collider.gameObject.tag;
             MeleeBase weapon = collision.collider.gameObject.GetComponent<MeleeBase>();
             TakeDamage(weapon.damage);
             // Crits

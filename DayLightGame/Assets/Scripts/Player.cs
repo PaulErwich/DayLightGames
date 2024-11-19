@@ -20,6 +20,11 @@ public class Player : Character
 
     private int gold;
 
+    public int meleeKillCount;
+    public int rangedKillCount;
+    public int requiredKillsMelee = 1;
+    public int requiredKillsRanged = 1;
+
     protected override void Awake()
     {
         if (instance == null)
@@ -171,5 +176,14 @@ public class Player : Character
     public EvolveTypeSword GetSwordEvolve()
     {
         return mb.GetEvolveType();
+    }
+
+    public void IncreaseKillCount(weaponType type)
+    {
+        Debug.Log("Increase count " + type);
+        if (type == weaponType.melee)
+            meleeKillCount++;
+        else if (type == weaponType.ranged)
+            rangedKillCount++;
     }
 }
