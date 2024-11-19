@@ -11,9 +11,12 @@ public class RoomManager : MonoBehaviour
     public GameObject elite;
     public GameObject boss;
 
-    private int currentRoom = 1;
+    public GameObject shopUI;
+    public GameObject upgradeUI;
+
+    private int currentRoom = 3;
     private float scalingFactor = 1.25f;
-    private int spawnCount = 15;
+    private int spawnCount = 1;
     private int additionalSpawningWaves = 2;
     private int enemiesThisRoom;
 
@@ -72,6 +75,8 @@ public class RoomManager : MonoBehaviour
             case 3: case 6: case 9: case 12: case 15:
                 // Standard Wave
                 // Shop
+                shopUI.SetActive(true);
+                shopUI.GetComponentInChildren<RestoreHealthUI>().UpdateUI();
                 break;
             case 5: case 11:
                 // Elite Wave
