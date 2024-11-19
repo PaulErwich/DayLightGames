@@ -41,7 +41,7 @@ public class Shield : MeleeBase
 
     public override void MeleeSpecial2()
     {
-        //Apply Ice To Enemies Hit
+        //Apply Ice To Enemies Hit --
         element = "ice";
     }
 }

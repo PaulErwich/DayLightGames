@@ -37,7 +37,7 @@ public class Dagger : MeleeBase
 
     public override void MeleeSpecial1()
     {
-        //Crit enemies below half health
+        //Crit enemies below half health --
     }
 
     public override void MeleeSpecial2()

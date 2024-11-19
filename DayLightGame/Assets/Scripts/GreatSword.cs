@@ -35,7 +35,7 @@ public class GreatSword : MeleeBase
 
     public override void MeleeSpecial1()
     {
-        //Chance To Crit
+        //Chance To Crit --
     }
 
     public override void MeleeSpecial2()

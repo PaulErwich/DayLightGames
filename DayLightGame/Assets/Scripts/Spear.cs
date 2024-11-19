@@ -36,12 +36,14 @@ public class Spear : MeleeBase
 
     public override void MeleeSpecial1()
     {
-        //Triple Attack
+        //Triple Attack --
         swingType = "stabx3";
     }
 
     public override void MeleeSpecial2()
     {
-        //Increased Range
+        //Increased Range --
+        Player.leftHand.GetChild(1).transform.localPosition = new Vector3(0f, 0.3f, 0f);
+        Player.leftHand.GetChild(1).transform.localScale = new Vector3(1.3f, 2f, 1f);
     }
 }
