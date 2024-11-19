@@ -20,7 +20,7 @@ public class RestoreHealthUI : MonoBehaviour
     private Color unavailable = new Color(255, 0, 0, 200);
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         Player.instance.GiveGold(100);
 
