@@ -8,11 +8,13 @@ using static UnityEngine.GraphicsBuffer;
 public class Player : Character
 {
     public static Player instance;
+    public static Transform leftHand;
+    public static Transform rightHand;
 
     private BowScript bow;
     private MeleeBase mb;
 
-    [SerializeField] private Transform pivotPoint;
+    [SerializeField] public Transform pivotPoint;
 
     private Vector2 move;
 
@@ -28,6 +30,8 @@ public class Player : Character
         {
             Destroy(gameObject);
         }
+        leftHand = this.transform.Find("Pivot Left Hand");
+        leftHand = this.transform.Find("Pivot Right Hand");
         base.Awake();
         baseSpeed = speed;
         cc.excludeLayers = LayerMask.GetMask("Weapons");

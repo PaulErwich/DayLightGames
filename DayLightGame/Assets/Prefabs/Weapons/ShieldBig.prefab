@@ -110,7 +110,7 @@ MonoBehaviour:
   attackSpeed: 1
   duration: 3
   slowAmount: 0
-  swingType: shield
+  swingType: shieldWide
 --- !u!61 &6071710881826135733
 BoxCollider2D:
   m_ObjectHideFlags: 0

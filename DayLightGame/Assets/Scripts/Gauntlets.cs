@@ -9,6 +9,12 @@ public class Gauntlets : MeleeBase
         //damage = Dagger Damage Here;
         //attackSpeed = Dagger Attack Speed Here;
         //duration = Gauntlets Slow Duration;
+
+        Player.leftHand.localPosition = new Vector3(-0.5f, 0.5f, 0f);
+        Player.leftHand.localRotation = new Quaternion(0f, 0f, 0f, 0f);
+
+        Player.rightHand.localPosition = new Vector3(0.5f, 0.5f, 0f);
+        Player.rightHand.localRotation = new Quaternion(0f, 0f, 0f, 0f);
     }
 
     public override void Enhance()

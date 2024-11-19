@@ -16,7 +16,8 @@ public class Enemy : Character
     NavMeshAgent agent;
     Animator am;
 
-    bool inAnimation;
+    private float cooldown;
+    private float attackSpeed = 0.5f;
 
     // Set stats for the created enemy
     public void SetUpEnemy(int _hitPoints = 10, int _speed = 4, int _armour = 1, int _goldWorth = 1)
@@ -56,6 +57,7 @@ public class Enemy : Character
     private void FixedUpdate()
     {
         GetTargetPosition();
+        cooldown += Time.deltaTime;
     }
 
     // Set the target of the NavMesh
@@ -73,11 +75,10 @@ public class Enemy : Character
             pivotPoint.rotation = Quaternion.RotateTowards(pivotPoint.rotation, targetRotation, 3);
         }
 
-        if (Vector2.Distance(pivotPoint.position, playerPos) <= 3f * transform.localScale.x && inAnimation == false)
+        if (Vector2.Distance(pivotPoint.position, playerPos) <= 2f * transform.localScale.x && cooldown >= 1 / attackSpeed)
         {
-            inAnimation = true;
             am.SetTrigger("slash");
-            StartCoroutine(AttackCooldown());
+            cooldown = 0;
         }
     }
 
@@ -104,7 +105,7 @@ public class Enemy : Character
         {
             MeleeBase weapon = collision.collider.gameObject.GetComponent<MeleeBase>();
             TakeDamage(weapon.damage);
-            switch (weapon.type)
+            //switch (weapon.type)
             {
 
             }
@@ -128,11 +129,5 @@ public class Enemy : Character
     public override void SetSpeed(int newSpeed)
     {
         agent.speed = newSpeed;
-    }
-
-    private IEnumerator AttackCooldown()
-    {
-        yield return new WaitForSeconds(1f);
-        inAnimation = false;
     }
 }

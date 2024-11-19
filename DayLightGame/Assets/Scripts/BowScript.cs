@@ -6,27 +6,26 @@ public class BowScript : MonoBehaviour
     //Jay
 
     [Header("Transform")]
-    public Transform player;
-    public Transform bow;
+    private Transform pivotPoint;
     public GameObject[] arrow;
     EvolveTypeBow evolve;
 
     [Header("Variables")]
     private float cooldown;
-    public float bowAtkSpeed = 1;
+    public float bowAtkSpeed = 3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         evolve = EvolveTypeBow.Default;
-        player = transform.parent.transform;
+        pivotPoint = Player.instance.pivotPoint.transform;
     }
 
     public void Shoot()
     {
         if (cooldown >= 1 / bowAtkSpeed)
         {
-            GameObject instantiatedArrow = Instantiate(arrow[(int)evolve], bow.position, player.rotation);
+            GameObject instantiatedArrow = Instantiate(arrow[(int)evolve], pivotPoint.position, pivotPoint.rotation);
             instantiatedArrow.SetActive(true);
             cooldown = 0;
         }

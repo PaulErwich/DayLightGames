@@ -110,7 +110,7 @@ MonoBehaviour:
   attackSpeed: 1
   duration: 3
   slowAmount: 0
-  swingType: axeSpin
+  swingType: axe
 --- !u!61 &8013407536641741264
 BoxCollider2D:
   m_ObjectHideFlags: 0

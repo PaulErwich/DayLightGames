@@ -16,10 +16,11 @@ public class MeleeBase : MonoBehaviour
 
     [Header("Stats")]
     public int damage = 2;
-    public float attackSpeed = 1;
+    public float attackSpeed = 3;
     public float duration = 3;
     public int slowAmount = 0;
 
+    private float cooldown;
     public string swingType = "slash";
 
     protected virtual void Awake()
@@ -28,9 +29,18 @@ public class MeleeBase : MonoBehaviour
         bc = GetComponent<BoxCollider2D>();
     }
 
+    private void Update()
+    {
+        cooldown += Time.deltaTime;
+    }
+
     public void Hit()
     {
-        animator.SetTrigger(swingType);
+        if (cooldown >= 1 / attackSpeed)
+        {
+            animator.SetTrigger(swingType);
+            cooldown = 0;
+        }
     }
 
     public EvolveTypeSword GetEvolveType()
