@@ -7,12 +7,14 @@ public class CrossbowArrow : ArrowScript
     private int pierceCount;
     private int pierceTotal;
     private bool firstHit = false;
+    private int critChance;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Awake()
     {
         pierceCount = 0;
         pierceTotal = 3;
+        critChance = 0;
 
         //damage = Crossbow Arrow Damage here
 
@@ -20,6 +22,11 @@ public class CrossbowArrow : ArrowScript
         {
             pierceTotal *= 2;
             //Increases pierce
+        }
+
+        if (bowSpecial2)
+        {
+            critChance = 25;
         }
 
         GetComponent<Rigidbody2D>().linearVelocity = transform.TransformDirection(new Vector2(10, 0));
@@ -41,11 +48,6 @@ public class CrossbowArrow : ArrowScript
         {
             //Return damage to normal value
             //damage /= 2;
-        }
-
-        if (bowSpecial2)
-        {
-            //Apply knockback to enemies
         }
 
         if (pierceCount >= pierceTotal)
