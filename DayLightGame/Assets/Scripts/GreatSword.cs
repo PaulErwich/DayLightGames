@@ -19,7 +19,6 @@ public class GreatSword : MeleeBase
     public override void Enhance()
     {
         //Increased Range
-
         Player.rightHand.GetChild(1).transform.localPosition = new Vector3(0f, 0.73f, 0f);
         Player.rightHand.GetChild(1).transform.localScale = new Vector3(1f, 1.7f, 1f);
     }

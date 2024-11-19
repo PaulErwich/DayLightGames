@@ -34,6 +34,7 @@ public class Axe : MeleeBase
     public override void MeleeSpecial1()
     {
         //360 Swing
+        swingType = "axeSpin";
     }
 
     public override void MeleeSpecial2()

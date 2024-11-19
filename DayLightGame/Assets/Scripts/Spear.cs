@@ -15,6 +15,8 @@ public class Spear : MeleeBase
 
         Player.rightHand.localPosition = new Vector3(0.588f, 0.161f, 0f);
         Player.rightHand.localRotation = new Quaternion(0f, 0f, 0f, 0f);
+
+        element = "bleed";
     }
 
     public override void Enhance()
@@ -35,6 +37,7 @@ public class Spear : MeleeBase
     public override void MeleeSpecial1()
     {
         //Triple Attack
+        swingType = "stabx3";
     }
 
     public override void MeleeSpecial2()

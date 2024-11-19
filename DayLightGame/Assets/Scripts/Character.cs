@@ -53,7 +53,7 @@ public class Character : MonoBehaviour
     }
 
     // Deal buring damage over so many ticks
-    public IEnumerator Burn(float duration, int amount)
+    public IEnumerator DOT(float duration, int amount)
     {
         for (int i = 0; i < duration ; i++)
         {

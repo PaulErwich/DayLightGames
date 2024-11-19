@@ -20,6 +20,7 @@ public class Gauntlets : MeleeBase
     public override void Enhance()
     {
         //Dual hit on third attack
+        swingType = "gauntletsBig";
     }
 
     public override void Damage()
@@ -40,5 +41,6 @@ public class Gauntlets : MeleeBase
     public override void MeleeSpecial2()
     {
         //Apply Electric On Hit
+        element = "electric";
     }
 }

@@ -54,6 +54,7 @@ public class Player : Character
                 break;
             case statUpgradeType.AttackSpeed:
                 bow.bowAtkSpeed += amount;
+                mb.attackSpeed += amount;
                 break;
             case statUpgradeType.Speed:
                 speed += amount;

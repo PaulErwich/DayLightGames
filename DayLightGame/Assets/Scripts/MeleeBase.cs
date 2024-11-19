@@ -13,6 +13,8 @@ public class MeleeBase : MonoBehaviour
     public bool meleeSpecial2;
     public bool enhance;
     public bool damageUp;
+    public string element;
+    public int elementDamage;
 
     [Header("Stats")]
     public int damage = 2;

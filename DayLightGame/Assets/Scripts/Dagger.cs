@@ -15,6 +15,9 @@ public class Dagger : MeleeBase
 
         Player.rightHand.localPosition = new Vector3(-0.5f, 0.5f, 0f);
         Player.rightHand.localRotation = new Quaternion(0f, 0f, 0f, 0f);
+
+        element = "bleed";
+        elementDamage = 1;
     }
 
     public override void Enhance()

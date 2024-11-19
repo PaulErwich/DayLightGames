@@ -91,7 +91,7 @@ public class Enemy : Character
             switch (arrow.type)
             {
                 case EvolveTypeBow.Fire:
-                    StartCoroutine(Burn(arrow.duration, arrow.damage));
+                    StartCoroutine(DOT(arrow.duration, arrow.damage));
                     break;
                 case EvolveTypeBow.Ice:
                     Slow(arrow.duration, GetSpeed());
@@ -105,9 +105,25 @@ public class Enemy : Character
         {
             MeleeBase weapon = collision.collider.gameObject.GetComponent<MeleeBase>();
             TakeDamage(weapon.damage);
-            //switch (weapon.type)
+            // Crits
+            if ((weapon.type == EvolveTypeSword.Dagger && weapon.meleeSpecial1 == true && hitPoints < hitPoints / 2) || 
+                (weapon.type == EvolveTypeSword.GreatSword && weapon.meleeSpecial1 == true && Random.Range(0, 20) == 0))
             {
-
+                TakeDamage(weapon.damage);
+            }
+            switch (weapon.element)
+            {
+                case null:
+                    break;
+                case "bleed":
+                    StartCoroutine(DOT(weapon.duration, weapon.elementDamage));
+                    break;
+                case "ice":
+                    Slow(weapon.duration, GetSpeed());
+                    break;
+                case "electric":
+                    Slow(weapon.duration, weapon.slowAmount);
+                    break;
             }
         }
         else if (collision.gameObject.tag == "playerFire")

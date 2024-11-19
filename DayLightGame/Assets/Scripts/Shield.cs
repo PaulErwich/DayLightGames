@@ -20,9 +20,7 @@ public class Shield : MeleeBase
     public override void Enhance()
     {
         //Wider Shield
-
         Player.leftHand.localPosition = new Vector3(-0.351f, 0.5f, 0f);
-
         Player.rightHand.localPosition = new Vector3(0.374f, 0.5f, 0f);
     }
 
@@ -44,5 +42,6 @@ public class Shield : MeleeBase
     public override void MeleeSpecial2()
     {
         //Apply Ice To Enemies Hit
+        element = "ice";
     }
 }
