@@ -8,8 +8,8 @@ public class Character : MonoBehaviour
     [Header("Attributes")]
     public int hitPointsMaximum;
     public int hitPoints;
-    public int baseSpeed = 10;
-    public int speed;
+    public float baseSpeed = 10;
+    public float speed;
     public int armour;
     protected Rigidbody2D rb;
     protected CircleCollider2D cc;
@@ -63,7 +63,7 @@ public class Character : MonoBehaviour
     }
 
     // Slow the character
-    public virtual void Slow(float duration, int slowedSpeed)
+    public virtual void Slow(float duration, float slowedSpeed)
     {
         coroutineCount++;
         SetSpeed(baseSpeed - slowedSpeed);
@@ -85,12 +85,12 @@ public class Character : MonoBehaviour
         }
     }
 
-    public virtual int GetSpeed()
+    public virtual float GetSpeed()
     {
         return speed;
     }
 
-    public virtual void SetSpeed(int newSpeed)
+    public virtual void SetSpeed(float newSpeed)
     {
         speed = newSpeed;
     }

@@ -144,12 +144,12 @@ public class Enemy : Character
         RoomManager.instance.enemiesDestroyed++;
     }
 
-    public override int GetSpeed()
+    public override float GetSpeed()
     {
-        return (int)agent.speed;
+        return (float)agent.speed;
     }
 
-    public override void SetSpeed(int newSpeed)
+    public override void SetSpeed(float newSpeed)
     {
         agent.speed = newSpeed;
     }

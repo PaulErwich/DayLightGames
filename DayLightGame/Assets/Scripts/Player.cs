@@ -1,7 +1,9 @@
+using System.Collections;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.Rendering.DebugUI;
 
 //Max
 
@@ -24,6 +26,12 @@ public class Player : Character
     public int rangedKillCount;
     public int requiredKillsMelee = 1;
     public int requiredKillsRanged = 1;
+
+    private bool canDash = true;
+    private bool isDashing;
+    public float dashCooldown = 1f;
+    public float dashPower = 4f;
+    public float dashTime = 0.2f;
 
     protected override void Awake()
     {
@@ -124,17 +132,46 @@ public class Player : Character
 
     private void OnMove(InputValue value)
     {
-        move = value.Get<Vector2>();
+        if (!isDashing)
+        {
+            move = value.Get<Vector2>();
+        }
+    }
+
+    private void OnJump(InputValue value)
+    {
+        if (canDash)
+        {
+            StartCoroutine(Dash());
+        }
     }
 
     private void OnMeleeAttack(InputValue value)
     {
-        mb.Hit();
+        if (!isDashing)
+        {
+            mb.Hit();
+        }
     }
 
     private void OnRangedAttack(InputValue value)
     {
-        bow.Shoot();
+        if (!isDashing)
+        {
+            bow.Shoot();
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        speed += dashPower;
+        yield return new WaitForSeconds(dashTime);
+        speed = baseSpeed;
+        isDashing = false;
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
     }
 
     private void FixedUpdate()

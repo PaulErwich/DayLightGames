@@ -36,6 +36,8 @@ public class Gauntlets : MeleeBase
     public override void MeleeSpecial1()
     {
         //Double Dash Distance
+        Player.instance.dashPower *= 2;
+        Player.instance.dashTime *= 2;
     }
 
     public override void MeleeSpecial2()
